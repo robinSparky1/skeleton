@@ -8,6 +8,9 @@ namespace Testing1
     {
         [TestMethod]
         public void TestMethod1()
+            clsCustomer ACustomer = new clsAddress();
+        Assert.IsNotNull(ACustomer);
+
         {
         }
     }
