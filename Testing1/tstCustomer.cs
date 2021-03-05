@@ -1,4 +1,5 @@
 ﻿using System;
+using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Testing1
@@ -8,10 +9,11 @@ namespace Testing1
     {
         [TestMethod]
         public void TestMethod1()
-            clsCustomer ACustomer = new clsAddress();
-        Assert.IsNotNull(ACustomer);
-
         {
+            clsCustomer ACustomer = new clsCustomer();
+            Assert.IsNotNull(ACustomer);
         }
+
     }
+
 }
