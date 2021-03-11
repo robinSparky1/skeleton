@@ -64,9 +64,18 @@ namespace Testing1
             //create some test data to assign to the property
             string TestData = "Alex@test.com";
             //assign the data to the property
-            AnAddress.CustomerName = TestData;
+            AnAddress.CustomerEmail = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnAddress.CustomerName, TestData);
+            Assert.AreEqual(AnAddress.CustomerEmail, TestData);
+        }
+        [TestMethod]
+        public void DateOfBirthPropertyOK()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+
+            DateTime TestData = DateTime.Now.Date;
+            ACustomer.DateOfBirth = TestData;
+            Assert.AreEqual(ACustomer.DateOfBirth, TestData);
         }
 
     }
