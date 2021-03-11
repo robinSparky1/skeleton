@@ -23,8 +23,11 @@
         <p>
             Ballance<asp:TextBox ID="txtBallance" runat="server"></asp:TextBox>
         </p>
-        <p id="lblAccountVerified">
-            Account Verified<asp:TextBox ID="txtAccountVerified" runat="server"></asp:TextBox>
+        <asp:CheckBox ID="chkAccountVerified" runat="server" Text="Account Verified" />
+        <p>
+            <asp:Label ID="lblError" runat="server"></asp:Label>
+            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
+            <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
         </p>
     </form>
 </body>
