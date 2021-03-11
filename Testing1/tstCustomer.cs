@@ -44,8 +44,33 @@ namespace Testing1
         //test to see that the two values are the same
         Assert.AreEqual(ABallance.Ballance, TestData);
     }
+        [TestMethod]
+        public void CustomerNamePropertyOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomer AName = new clsCustomer();
+            //create some test data to assign to the property
+            string TestData = "Alex";
+            //assign the data to the property
+            AName.CustomerName = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AName.CustomerName, TestData);
+        }
+        [TestMethod]
+        public void CustomerEmailPropertyOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomer AnAddress = new clsCustomer();
+            //create some test data to assign to the property
+            string TestData = "Alex@test.com";
+            //assign the data to the property
+            AnAddress.CustomerName = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AnAddress.CustomerName, TestData);
+        }
+
     }
-    
+
 
 
 }
