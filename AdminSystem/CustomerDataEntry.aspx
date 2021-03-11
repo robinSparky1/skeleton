@@ -7,10 +7,9 @@
     <title></title>
 </head>
 <body>
-    this is a customer web page
     <form id="form1" runat="server">
-        <div>
-        </div>
+        <div id="ibl">
+            CustomerName</div>
     </form>
 </body>
 </html>
