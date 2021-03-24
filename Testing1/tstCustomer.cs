@@ -77,6 +77,20 @@ namespace Testing1
             ACustomer.DateOfBirth = TestData;
             Assert.AreEqual(ACustomer.DateOfBirth, TestData);
         }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create instance of class
+            clsCustomer AClass = new clsCustomer();
+            //bool to store result of validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 ABallence = 21;
+            //invoke
+            Found = AClass.Find(ABallence);
+            //test if true
+            Assert.IsTrue(Found);
+        }
 
     }
 
