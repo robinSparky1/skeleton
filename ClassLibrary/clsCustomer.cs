@@ -22,6 +22,7 @@ namespace ClassLibrary
 
         public bool Find(int AccountNo)
         {
+            mAccountNo = 21;
             return true;
         }
     }
