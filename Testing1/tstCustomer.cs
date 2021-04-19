@@ -140,7 +140,7 @@ namespace Testing1
             //create some test data to assign to the property
             Boolean Found = false;
             Boolean OK = true;
-            int32 AddressNo = 21;
+            Int32 AddressNo = 21;
             Found = AnAddress.Find(AddressNo);
             if (AnAddress.DateAdded != Convert.ToDateTime("16/09/2015"))
             {
