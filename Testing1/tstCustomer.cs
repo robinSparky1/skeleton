@@ -118,7 +118,20 @@ namespace Testing1
             }
             Assert.IsTrue(OK);
         }
-
+        [TestMethod]
+        public void TestDateOfBirth()
+        {
+            clsCustomer AnAccount = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 AccountNo = 21;
+            Found = AnAccount.Find(AccountNo);
+            if (AnAccount.DateOfBirth != Convert.ToDateTime("16/09/2015"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
 
     }
 
