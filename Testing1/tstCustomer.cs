@@ -132,6 +132,25 @@ namespace Testing1
             }
             Assert.IsTrue(OK);
         }
+        [TestMethod]
+        public void TestDateAddedFound()
+        {
+            //create an instance of the class we want to create
+            clsCustomer AnAddress = new clsCustomer();
+            //create some test data to assign to the property
+            Boolean Found = false;
+            Boolean OK = true;
+            int32 AddressNo = 21;
+            Found = AnAddress.Find(AddressNo);
+            if (AnAddress.DateAdded != Convert.ToDateTime("16/09/2015"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+
 
     }
 
