@@ -7,10 +7,28 @@
     <title></title>
 </head>
 <body>
-    this is a customer web page
     <form id="form1" runat="server">
-        <div>
+        <div id="ibl">
+            CustomerName<asp:TextBox ID="txtCustomerName" runat="server"></asp:TextBox>
         </div>
+        <p id="lblCustomerEmail">
+            Email<asp:TextBox ID="txtCustomerEmail" runat="server"></asp:TextBox>
+        </p>
+        <p id="lblDateAdded">
+            DateAdded<asp:TextBox ID="txtDateAdded" runat="server"></asp:TextBox>
+        </p>
+        <p id="lblDateOfBirth">
+            Date Of Birth<asp:TextBox ID="txtDateOfBirth" runat="server"></asp:TextBox>
+        </p>
+        <p>
+            Ballance<asp:TextBox ID="txtBallance" runat="server"></asp:TextBox>
+        </p>
+        <asp:CheckBox ID="chkAccountVerified" runat="server" Text="Account Verified" />
+        <p>
+            <asp:Label ID="lblError" runat="server"></asp:Label>
+            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
+            <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+        </p>
     </form>
 </body>
 </html>
