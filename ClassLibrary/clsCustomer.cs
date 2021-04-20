@@ -9,6 +9,8 @@ namespace ClassLibrary
         private DateTime mDateAdded;
         private DateTime mDateOfBirth;
         private int mBallance;
+        private string mCustomerName;
+        private string mCustomerEmail;
 
         public bool AccountVerified { get {
                 return mAccountVerified;
@@ -36,8 +38,34 @@ namespace ClassLibrary
             }
         }
 
-        public string CustomerName { get; set; }
-        public string CustomerEmail { get; set; }
+        public string CustomerName
+        {
+            get
+            {
+                //return the private data
+                return mCustomerName;
+            }
+            set
+            {
+                //set the private data
+                mCustomerName = value;
+            }
+        }
+
+        public string CustomerEmail
+        {
+            get
+            {
+                //return the private data
+                return mCustomerEmail;
+            }
+            set
+            {
+                //set the private data
+                mCustomerEmail = value;
+            }
+        }
+
         public DateTime DateOfBirth {
             get
             {
