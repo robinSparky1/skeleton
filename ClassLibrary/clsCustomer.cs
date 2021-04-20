@@ -85,14 +85,24 @@ namespace ClassLibrary
 
         public bool Find(int AccountNo)
         {
-            mCustomerName = "XXX XXX";
-            mCustomerEmail = "XXX@gmail.com";
-            mAccountNo = 21;
-            mBallance = 1;
-            mAccountVerified = true;
-            mDateAdded = Convert.ToDateTime("16/9/2015");
-            mDateOfBirth = Convert.ToDateTime("16/9/2015");
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@AccountNo", AccountNo);
+            DB.Execute("sproc_tblCustomer_FilterByAccountNo");
+            if (DB.Count == 1)
+            {
+                mCustomerName = Convert.ToString(DB.DataTable.Rows[0]["CustomerName"]);
+                mCustomerEmail = Convert.ToString(DB.DataTable.Rows[0]["CustomerEmail"]);
+                mAccountNo = Convert.ToInt32(DB.DataTable.Rows[0]["AccountNo"]);
+                mBallance = Convert.ToInt32(DB.DataTable.Rows[0]["Ballance"]);
+                mAccountVerified = Convert.ToBoolean(DB.DataTable.Rows[0]["AccountVerified"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                mDateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[0]["DateOfBirth"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
