@@ -8,8 +8,13 @@ namespace ClassLibrary
         private bool mAccountVerified;
         private DateTime mDateAdded;
         private DateTime mDateOfBirth;
+        private int mBallance;
 
-        public bool AccountVerified { get; set; }
+        public bool AccountVerified { get {
+                return mAccountVerified;
+            } set {
+                mAccountVerified = value;
+            } }
         public DateTime DateAdded {
             get {
                 return mDateAdded;
@@ -17,7 +22,20 @@ namespace ClassLibrary
             set {
                 mDateAdded = value;
             } }
-        public int Ballance { get; set; }
+        public int Ballance
+        {
+            get
+            {
+                //return the private data
+                return mBallance;
+            }
+            set
+            {
+                //set the private data
+                mBallance = value;
+            }
+        }
+
         public string CustomerName { get; set; }
         public string CustomerEmail { get; set; }
         public DateTime DateOfBirth {
@@ -40,6 +58,7 @@ namespace ClassLibrary
         public bool Find(int AccountNo)
         {
             mAccountNo = 21;
+            mBallance = 1;
             mAccountVerified = true;
             mDateAdded = Convert.ToDateTime("16/9/2015");
             mDateOfBirth = Convert.ToDateTime("16/9/2015");
