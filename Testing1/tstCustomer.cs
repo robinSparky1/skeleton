@@ -149,6 +149,27 @@ namespace Testing1
             Assert.IsTrue(OK);
 
         }
+        [TestMethod]
+        public void TestActiveFound()
+        {
+            //create an instance of the class we want to create
+            clsCustomer AnAddress = new clsCustomer();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 AccountNo = 21;
+            //invoke the method
+            Found = AnAddress.Find(AccountNo);
+            //check the property
+            if (AnAddress.AccountVerified != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
 
 
 

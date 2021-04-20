@@ -5,6 +5,7 @@ namespace ClassLibrary
     public class clsCustomer
     {
         private Int32 mAccountNo;
+        private bool mAccountVerified;
         private DateTime mDateAdded;
         private DateTime mDateOfBirth;
 
@@ -39,6 +40,7 @@ namespace ClassLibrary
         public bool Find(int AccountNo)
         {
             mAccountNo = 21;
+            mAccountVerified = true;
             mDateAdded = Convert.ToDateTime("16/9/2015");
             mDateOfBirth = Convert.ToDateTime("16/9/2015");
             return true;
