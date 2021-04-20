@@ -98,7 +98,7 @@ namespace Testing1
             //bool to store result of validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 ABallence = 21;
+            Int32 ABallence = 1;
             //invoke
             Found = AClass.Find(ABallence);
             //test if true
@@ -110,9 +110,9 @@ namespace Testing1
             clsCustomer AnAccount = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 AccountNo = 21;
+            Int32 AccountNo = 1;
             Found = AnAccount.Find(AccountNo);
-            if (AnAccount.AccountNo != 21)
+            if (AnAccount.AccountNo != 1)
             {
                 OK = false;
             }
@@ -124,9 +124,9 @@ namespace Testing1
             clsCustomer AnAccount = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 AccountNo = 21;
+            Int32 AccountNo = 1;
             Found = AnAccount.Find(AccountNo);
-            if (AnAccount.DateOfBirth != Convert.ToDateTime("16/09/2015"))
+            if (AnAccount.DateOfBirth != Convert.ToDateTime("12/02/2000"))
             {
                 OK = false;
             }
@@ -140,9 +140,9 @@ namespace Testing1
             //create some test data to assign to the property
             Boolean Found = false;
             Boolean OK = true;
-            Int32 AddressNo = 21;
+            Int32 AddressNo = 1;
             Found = AnAddress.Find(AddressNo);
-            if (AnAddress.DateAdded != Convert.ToDateTime("16/09/2015"))
+            if (AnAddress.DateAdded != Convert.ToDateTime("12/02/2021"))
             {
                 OK = false;
             }
@@ -159,7 +159,7 @@ namespace Testing1
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 AccountNo = 21;
+            Int32 AccountNo = 1;
             //invoke the method
             Found = AnAddress.Find(AccountNo);
             //check the property
@@ -171,7 +171,7 @@ namespace Testing1
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestCountyNoFound()
+        public void TestBallanceFound()
         {
             //create an instance of the class we want to create
             clsCustomer AnAddress = new clsCustomer();
@@ -180,11 +180,11 @@ namespace Testing1
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 AddressNo = 21;
+            Int32 AddressNo = 1;
             //invoke the method
             Found = AnAddress.Find(AddressNo);
             //check the property
-            if (AnAddress.Ballance != 1)
+            if (AnAddress.Ballance != 200)
             {
                 OK = false;
             }
@@ -201,11 +201,11 @@ namespace Testing1
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 AddressNo = 21;
+            Int32 AddressNo = 1;
             //invoke the method
             Found = AnAddress.Find(AddressNo);
             //check the property
-            if (AnAddress.CustomerName != "XXX XXX")
+            if (AnAddress.CustomerName != "julia")
             {
                 OK = false;
             }
@@ -222,11 +222,11 @@ namespace Testing1
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 AddressNo = 21;
+            Int32 AddressNo = 1;
             //invoke the method
             Found = AnAddress.Find(AddressNo);
             //check the property
-            if (AnAddress.CustomerEmail != "XXX@gmail.com")
+            if (AnAddress.CustomerEmail != "juliasomething@gmail.com")
             {
                 OK = false;
             }
