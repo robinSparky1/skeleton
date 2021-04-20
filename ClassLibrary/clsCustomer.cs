@@ -85,6 +85,8 @@ namespace ClassLibrary
 
         public bool Find(int AccountNo)
         {
+            mCustomerName = "XXX XXX";
+            mCustomerEmail = "XXX@gmail.com";
             mAccountNo = 21;
             mBallance = 1;
             mAccountVerified = true;
