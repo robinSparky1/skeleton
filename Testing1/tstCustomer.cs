@@ -262,7 +262,21 @@ namespace Testing1
             //see if result is correct
             Assert.AreNotEqual(Error, "");
         }
-
+        [TestMethod]
+        public void CutomerNameMin()
+        {
+            //create instance of class we want
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store error message
+            String Error = "";
+            //test data to pass
+            string CustomerName = "a";//this should not trigger an error
+            //invoke method
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded,
+            DateOfBirth, Ballance);
+            //see if result is correct
+            Assert.AreEqual(Error, "");
+        }
 
     }
 
