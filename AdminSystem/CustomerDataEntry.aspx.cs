@@ -25,12 +25,23 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsCustomer ACustomer = new clsCustomer();
         //variable to store the primary key
-        Int32 AddressNo;
+        Int32 AccountNo;
         //variable to store the result of the find operation
         Boolean Found = false;
         //get the primary key entered by the user
-        AddressNo = Convert.ToInt32(txtAccountNo);
+        AccountNo = Convert.ToInt32(txtAccountNo);
         //find the record
         Found = ACustomer.Find(AccountNo);
+        //if found
+        if (Found == true)
+        {
+            //display the values of the properties in the form
+            txtCustomerName.Text = ACustomer.CustomerName;
+            txtCustomerEmail.Text = ACustomer.CustomerEmail;
+            txtBallance.Text = ACustomer.Ballance.ToString();
+            txtDateOfBirth.Text = ACustomer.DateOfBirth.ToString();
+            txtDateAdded.Text = ACustomer.DateAdded.ToString();
+            
+        }
     }
 }
