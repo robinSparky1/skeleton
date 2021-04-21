@@ -11,7 +11,7 @@ namespace ClassLibrary
         private int mBallance;
         private string mCustomerName;
         private string mCustomerEmail;
-
+        
         public bool AccountVerified { get {
                 return mAccountVerified;
             } set {
@@ -103,6 +103,12 @@ namespace ClassLibrary
             {
                 return false;
             }
+        }
+        public string Valid(string CustomerName,
+            string CustomerEmail, string dateAdded,
+            string DateOfBirth, string Ballance)
+        {
+            return "";
         }
     }
 }

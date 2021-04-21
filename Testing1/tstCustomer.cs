@@ -7,6 +7,11 @@ namespace Testing1
     [TestClass]
     public class tstCustomer
     {
+        string CustomerName = "joe";
+        string CustomerEmail = "joe@gmail.com";
+        string DateAdded = DateTime.Now.Date.ToString();
+        string DateOfBirth = DateTime.Now.Date.ToString();
+        string Ballance = "5";
         [TestMethod]
         public void TestMethod1()
         {
@@ -233,7 +238,15 @@ namespace Testing1
             //test to see that the result is correct
             Assert.IsTrue(OK);
         }
-
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsCustomer ACutomer = new clsCustomer();
+            String Error = "";
+            Error = ACutomer.Valid(CustomerName,CustomerEmail, DateAdded,
+            DateOfBirth, Ballance);
+            Assert.AreEqual(Error, "");
+        }
 
 
     }
