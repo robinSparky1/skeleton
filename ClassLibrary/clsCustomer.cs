@@ -11,6 +11,7 @@ namespace ClassLibrary
         private int mBallance;
         private string mCustomerName;
         private string mCustomerEmail;
+
         
         public bool AccountVerified { get {
                 return mAccountVerified;
@@ -109,6 +110,7 @@ namespace ClassLibrary
             string DateOfBirth, string Ballance)
         {
             String Error = "";
+            DateTime dateTemp;
             if (CustomerName.Length == 0)
             {
                 Error = Error + "Name may not be blank: ";
@@ -124,6 +126,11 @@ namespace ClassLibrary
             if (CustomerEmail.Length > 50)
             {
                 Error = Error + "Email must be less than 50 characters: ";
+            }
+            dateTemp = Convert.ToDateTime(dateAdded);
+            if (DateTime.Now.Date != dateTemp)
+            {
+                Error = Error + "dateAdded must be today";
             }
             return Error;
         }

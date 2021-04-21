@@ -498,7 +498,7 @@ namespace Testing1
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void CutomerDateAddedExtremeMin()
+        public void DateAddedExtremeMin()
         {
             //create instance of class we want
             clsCustomer ACustomer = new clsCustomer();
@@ -515,7 +515,7 @@ namespace Testing1
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void CutomerDateAddedNow()
+        public void DateAddedNow()
         {
             //create instance of class we want
             clsCustomer ACustomer = new clsCustomer();
@@ -533,7 +533,7 @@ namespace Testing1
         }
         
         [TestMethod]
-        public void CutomerTommorow()
+        public void DateAddedTommorow()
         {
             //create instance of class we want
             clsCustomer ACustomer = new clsCustomer();
@@ -550,7 +550,7 @@ namespace Testing1
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void CutomerDateAddedMaxExtremeMax()
+        public void DateAddedMaxExtremeMax()
         {
             //create instance of class we want
             clsCustomer ACustomer = new clsCustomer();
@@ -567,7 +567,7 @@ namespace Testing1
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void CutomerDateAddedyesterday()
+        public void DateAddedyesterday()
         {
             //create instance of class we want
             clsCustomer ACustomer = new clsCustomer();
