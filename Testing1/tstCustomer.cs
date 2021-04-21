@@ -340,6 +340,23 @@ namespace Testing1
             //see if result is correct
             Assert.AreEqual(Error, "");
         }
+        [TestMethod]
+        public void CutomerNameMaxPlusOne()
+        {
+            //create instance of class we want
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store error message
+            String Error = "";
+            //test data to pass
+            string CustomerName = "";
+            CustomerName = CustomerName.PadRight(51, 'a');//this should not trigger an error
+            //invoke method
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded,
+            DateOfBirth, Ballance);
+            //see if result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
     }
 
 
