@@ -566,5 +566,22 @@ namespace Testing1
             //see if result is correct
             Assert.AreNotEqual(Error, "");
         }
+        [TestMethod]
+        public void CutomerDateAddedyesterday()
+        {
+            //create instance of class we want
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store error message
+            String Error = "";
+            //test data to pass
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date.AddDays(1);//this should trigger an error
+            string DateAdded = TestDate.ToString();
+            //invoke method
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded,
+            DateOfBirth, Ballance);
+            //see if result is correct
+            Assert.AreNotEqual(Error, "");
+        }
     }
 }
