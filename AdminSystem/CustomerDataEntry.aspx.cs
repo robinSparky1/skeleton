@@ -29,7 +29,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //variable to store the result of the find operation
         Boolean Found = false;
         //get the primary key entered by the user
-        AccountNo = Convert.ToInt32(txtAccountNo);
+        AccountNo = Convert.ToInt32(txtAccountNo.Text);
         //find the record
         Found = ACustomer.Find(AccountNo);
         //if found
