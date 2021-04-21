@@ -111,11 +111,19 @@ namespace ClassLibrary
             String Error = "";
             if (CustomerName.Length == 0)
             {
-                Error = Error + "name may not be blank: ";
+                Error = Error + "Name may not be blank: ";
             }
             if (CustomerName.Length > 50)
             {
                 Error = Error + "Name must be less than 50 characters: ";
+            }
+            if (CustomerEmail.Length == 0)
+            {
+                Error = Error + "Email may not be blank: ";
+            }
+            if (CustomerEmail.Length > 50)
+            {
+                Error = Error + "Email must be less than 50 characters: ";
             }
             return Error;
         }
