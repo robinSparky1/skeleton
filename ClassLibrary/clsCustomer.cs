@@ -108,7 +108,12 @@ namespace ClassLibrary
             string CustomerEmail, string dateAdded,
             string DateOfBirth, string Ballance)
         {
-            return "";
+            String Error = "";
+            if (CustomerName.Length == 0)
+            {
+                Error = Error + "name may not be blank: ";
+            }
+            return Error;
         }
     }
 }
