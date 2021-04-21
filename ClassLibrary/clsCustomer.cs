@@ -113,6 +113,10 @@ namespace ClassLibrary
             {
                 Error = Error + "name may not be blank: ";
             }
+            if (CustomerName.Length > 50)
+            {
+                Error = Error + "Name must be less than 50 characters: ";
+            }
             return Error;
         }
     }
