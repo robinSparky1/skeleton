@@ -418,15 +418,15 @@ namespace Testing1
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void CutomerNameMaxLessOne()
+        public void CutomerEmailMaxLessOne()
         {
             //create instance of class we want
             clsCustomer ACustomer = new clsCustomer();
             //string variable to store error message
             String Error = "";
             //test data to pass
-            string CustomerName = "";
-            CustomerName = CustomerName.PadRight(49, 'a');//this should not trigger an error
+            string CustomerEmail = "";
+            CustomerEmail = CustomerEmail.PadRight(49, 'a');//this should not trigger an error
             //invoke method
             Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded,
             DateOfBirth, Ballance);
@@ -434,15 +434,15 @@ namespace Testing1
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void CutomerNameMax()
+        public void CutomerEmailMax()
         {
             //create instance of class we want
             clsCustomer ACustomer = new clsCustomer();
             //string variable to store error message
             String Error = "";
             //test data to pass
-            string CustomerName = "";
-            CustomerName = CustomerName.PadRight(50, 'a');//this should not trigger an error
+            string CustomerEmail = "";
+            CustomerEmail = CustomerEmail.PadRight(50, 'a');//this should not trigger an error
             //invoke method
             Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded,
             DateOfBirth, Ballance);
@@ -450,15 +450,15 @@ namespace Testing1
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void CutomerNameMid()
+        public void CutomerEmailMid()
         {
             //create instance of class we want
             clsCustomer ACustomer = new clsCustomer();
             //string variable to store error message
             String Error = "";
             //test data to pass
-            string CustomerName = "";
-            CustomerName = CustomerName.PadRight(25, 'a');//this should not trigger an error
+            string CustomerEmail = "";
+            CustomerEmail = CustomerEmail.PadRight(25, 'a');//this should not trigger an error
             //invoke method
             Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded,
             DateOfBirth, Ballance);
@@ -466,15 +466,15 @@ namespace Testing1
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void CutomerNameMaxPlusOne()
+        public void CutomerEmailMaxPlusOne()
         {
             //create instance of class we want
             clsCustomer ACustomer = new clsCustomer();
             //string variable to store error message
             String Error = "";
             //test data to pass
-            string CustomerName = "";
-            CustomerName = CustomerName.PadRight(51, 'a');//this should trigger an error
+            string CustomerEmail = "";
+            CustomerEmail = CustomerEmail.PadRight(51, 'a');//this should trigger an error
             //invoke method
             Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded,
             DateOfBirth, Ballance);
@@ -482,15 +482,15 @@ namespace Testing1
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void CutomerNameMaxExtremeMax()
+        public void CutomerEmailMaxExtremeMax()
         {
             //create instance of class we want
             clsCustomer ACustomer = new clsCustomer();
             //string variable to store error message
             String Error = "";
             //test data to pass
-            string CustomerName = "";
-            CustomerName = CustomerName.PadRight(1000, 'a');//this should trigger an error
+            string CustomerEmail = "";
+            CustomerEmail = CustomerEmail.PadRight(1000, 'a');//this should trigger an error
             //invoke method
             Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded,
             DateOfBirth, Ballance);
