@@ -523,7 +523,7 @@ namespace Testing1
             String Error = "";
             //test data to pass
             DateTime TestDate;
-            TestDate = DateTime.Now.Date;//this should trigger an error
+            TestDate = DateTime.Now.Date;//this should not trigger an error
             string DateAdded = TestDate.ToString();
             //invoke method
             Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded,
@@ -616,6 +616,39 @@ namespace Testing1
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
+        public void DateOfBirthMinLessOne()
+        {
+            //create instance of class we want
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store error message
+            String Error = "";
+            //test data to pass
+            DateTime TestDate;
+            TestDate = Convert.ToDateTime("1/1/1903");//this should trigger an error
+            string DateOfBirth = TestDate.ToString();
+            //invoke method
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded,
+            DateOfBirth, Ballance);
+            //see if result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        public void DateOfBirthMin()
+        {
+            //create instance of class we want
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store error message
+            String Error = "";
+            //test data to pass
+            DateTime TestDate;
+            TestDate = Convert.ToDateTime("2/1/1903");//this should trigger an error
+            string DateOfBirth = TestDate.ToString();
+            //invoke method
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded,
+            DateOfBirth, Ballance);
+            //see if result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
         public void DateOfBirthNow()
         {
             //create instance of class we want
@@ -624,7 +657,7 @@ namespace Testing1
             String Error = "";
             //test data to pass
             DateTime TestDate;
-            TestDate = DateTime.Now.Date;//this should trigger an error
+            TestDate = DateTime.Now.Date;//this should not trigger an error
             string DateOfBirth = TestDate.ToString();
             //invoke method
             Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded,
@@ -643,7 +676,7 @@ namespace Testing1
             //test data to pass
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddDays(1);//this should trigger an error
-            string DateAdded = TestDate.ToString();
+            string DateOfBirth = TestDate.ToString();
             //invoke method
             Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded,
             DateOfBirth, Ballance);
@@ -660,7 +693,7 @@ namespace Testing1
             //test data to pass
             DateTime TestDate;
             TestDate = DateTime.Now.Date.AddYears(100);//this should trigger an error
-            string DateAdded = TestDate.ToString();
+            string DateOfBirth = TestDate.ToString();
             //invoke method
             Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded,
             DateOfBirth, Ballance);
@@ -676,13 +709,13 @@ namespace Testing1
             String Error = "";
             //test data to pass
             DateTime TestDate;
-            TestDate = DateTime.Now.Date.AddDays(1);//this should trigger an error
-            string DateAdded = TestDate.ToString();
+            TestDate = DateTime.Now.Date.AddDays(1);//this should not trigger an error
+            string DateOfBirth = TestDate.ToString();
             //invoke method
             Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded,
             DateOfBirth, Ballance);
             //see if result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
     }
 }

@@ -11,8 +11,8 @@ namespace ClassLibrary
         private int mBallance;
         private string mCustomerName;
         private string mCustomerEmail;
+        private DateTime dateKaneTanaka;
 
-        
         public bool AccountVerified { get {
                 return mAccountVerified;
             } set {
@@ -133,6 +133,23 @@ namespace ClassLibrary
                 if (DateTime.Now.Date != dateTemp)
                 {
                     Error = Error + "dateAdded must be today";
+                }
+            }
+            catch
+            {
+                Error = Error + "not a valid date";
+            }
+            try
+            {
+                dateTemp = Convert.ToDateTime(dateAdded);
+                dateKaneTanaka = Convert.ToDateTime("02/01/1903");
+                if (DateTime.Now.Date > dateTemp)
+                {
+                    Error = Error + "dateOfBirth must be in the past";
+                }
+                if (DateTime.Now.Date > dateTemp)
+                {
+                    Error = Error + "dateOfBith must be after 2/1/1903";
                 }
             }
             catch
