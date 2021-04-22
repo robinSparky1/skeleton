@@ -141,13 +141,13 @@ namespace ClassLibrary
             }
             try
             {
-                dateTemp = Convert.ToDateTime(dateAdded);
+                dateTemp = Convert.ToDateTime(DateOfBirth);
                 dateKaneTanaka = Convert.ToDateTime("02/01/1903");
-                if (DateTime.Now.Date > dateTemp)
+                if (DateTime.Now.Date < dateTemp)
                 {
                     Error = Error + "dateOfBirth must be in the past";
                 }
-                if (DateTime.Now.Date > dateTemp)
+                if (dateKaneTanaka > dateTemp)
                 {
                     Error = Error + "dateOfBith must be after 2/1/1903";
                 }

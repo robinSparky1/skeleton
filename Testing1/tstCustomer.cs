@@ -575,7 +575,7 @@ namespace Testing1
             String Error = "";
             //test data to pass
             DateTime TestDate;
-            TestDate = DateTime.Now.Date.AddDays(1);//this should trigger an error
+            TestDate = DateTime.Now.Date.AddDays(-1);//this should trigger an error
             string DateAdded = TestDate.ToString();
             //invoke method
             Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded,
@@ -632,6 +632,7 @@ namespace Testing1
             //see if result is correct
             Assert.AreNotEqual(Error, "");
         }
+        [TestMethod]
         public void DateOfBirthMin()
         {
             //create instance of class we want
@@ -640,13 +641,13 @@ namespace Testing1
             String Error = "";
             //test data to pass
             DateTime TestDate;
-            TestDate = Convert.ToDateTime("2/1/1903");//this should trigger an error
+            TestDate = Convert.ToDateTime("02/01/1903");//this should not trigger an error
             string DateOfBirth = TestDate.ToString();
             //invoke method
             Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded,
             DateOfBirth, Ballance);
             //see if result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void DateOfBirthNow()
@@ -709,7 +710,24 @@ namespace Testing1
             String Error = "";
             //test data to pass
             DateTime TestDate;
-            TestDate = DateTime.Now.Date.AddDays(1);//this should not trigger an error
+            TestDate = DateTime.Now.Date.AddDays(-1);//this should not trigger an error
+            string DateOfBirth = TestDate.ToString();
+            //invoke method
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded,
+            DateOfBirth, Ballance);
+            //see if result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateOfBirthMid()
+        {
+            //create instance of class we want
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store error message
+            String Error = "";
+            //test data to pass
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date.AddYears(-50);//this should not trigger an error
             string DateOfBirth = TestDate.ToString();
             //invoke method
             Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded,
