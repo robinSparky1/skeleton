@@ -10,9 +10,9 @@
     <form id="form1" runat="server">
         <div id="ibl">
             AccountNo<asp:TextBox ID="txtAccountNo" runat="server"></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
             <br />
             CustomerName<asp:TextBox ID="txtCustomerName" runat="server"></asp:TextBox>
-            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
         </div>
         <p id="lblCustomerEmail">
             Email<asp:TextBox ID="txtCustomerEmail" runat="server"></asp:TextBox>
