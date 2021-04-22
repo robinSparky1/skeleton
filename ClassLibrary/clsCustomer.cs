@@ -11,6 +11,8 @@ namespace ClassLibrary
         private int mBallance;
         private string mCustomerName;
         private string mCustomerEmail;
+        private DateTime dateKaneTanaka;
+        private int BallanceTemp;
 
         public bool AccountVerified { get {
                 return mAccountVerified;
@@ -103,6 +105,75 @@ namespace ClassLibrary
             {
                 return false;
             }
+        }
+        public string Valid(string CustomerName,
+            string CustomerEmail, string dateAdded,
+            string DateOfBirth, string Ballance)
+        {
+            String Error = "";
+            DateTime dateTemp;
+            if (CustomerName.Length == 0)
+            {
+                Error = Error + "Name may not be blank: ";
+            }
+            if (CustomerName.Length > 50)
+            {
+                Error = Error + "Name must be less than 50 characters: ";
+            }
+            if (CustomerEmail.Length == 0)
+            {
+                Error = Error + "Email may not be blank: ";
+            }
+            if (CustomerEmail.Length > 50)
+            {
+                Error = Error + "Email must be less than 50 characters: ";
+            }
+            try
+            {
+                dateTemp = Convert.ToDateTime(dateAdded);
+                if (DateTime.Now.Date != dateTemp)
+                {
+                    Error = Error + "dateAdded must be today";
+                }
+            }
+            catch
+            {
+                Error = Error + "not a valid date";
+            }
+            try
+            {
+                dateTemp = Convert.ToDateTime(DateOfBirth);
+                dateKaneTanaka = Convert.ToDateTime("02/01/1903");
+                if (DateTime.Now.Date < dateTemp)
+                {
+                    Error = Error + "dateOfBirth must be in the past";
+                }
+                if (dateKaneTanaka > dateTemp)
+                {
+                    Error = Error + "dateOfBith must be after 2/1/1903";
+                }
+            }
+            catch
+            {
+                Error = Error + "not a valid date";
+            }
+            try
+            {
+                BallanceTemp = Convert.ToInt32(Ballance);
+                if (1000000 < BallanceTemp)
+                {
+                    Error = Error + "Ballance must be in the less than 1,000,000";
+                }
+                if (0 > BallanceTemp)
+                {
+                    Error = Error + "Ballance must be positive";
+                }
+            }
+            catch
+            {
+                Error = Error + "not a valid int";
+            }
+            return Error;
         }
     }
 }
