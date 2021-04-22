@@ -12,6 +12,7 @@ namespace ClassLibrary
         private string mCustomerName;
         private string mCustomerEmail;
         private DateTime dateKaneTanaka;
+        private int BallanceTemp;
 
         public bool AccountVerified { get {
                 return mAccountVerified;
@@ -155,6 +156,22 @@ namespace ClassLibrary
             catch
             {
                 Error = Error + "not a valid date";
+            }
+            try
+            {
+                BallanceTemp = Convert.ToInt32(Ballance);
+                if (1000000 < BallanceTemp)
+                {
+                    Error = Error + "Ballance must be in the less than 1,000,000";
+                }
+                if (0 > BallanceTemp)
+                {
+                    Error = Error + "Ballance must be positive";
+                }
+            }
+            catch
+            {
+                Error = Error + "not a valid int";
             }
             return Error;
         }
