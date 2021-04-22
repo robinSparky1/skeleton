@@ -127,10 +127,17 @@ namespace ClassLibrary
             {
                 Error = Error + "Email must be less than 50 characters: ";
             }
-            dateTemp = Convert.ToDateTime(dateAdded);
-            if (DateTime.Now.Date != dateTemp)
+            try
             {
-                Error = Error + "dateAdded must be today";
+                dateTemp = Convert.ToDateTime(dateAdded);
+                if (DateTime.Now.Date != dateTemp)
+                {
+                    Error = Error + "dateAdded must be today";
+                }
+            }
+            catch
+            {
+                Error = Error + "not a valid date";
             }
             return Error;
         }
