@@ -45,8 +45,8 @@ namespace Testing1
             TestItem.DateAdded = DateTime.Now.Date;
             TestItem.DateOfBirth = Convert.ToDateTime("01/01/2000");
             
-            AllCustomers.ThisAddress = TestItem;
-            Assert.AreEqual(AllCustomers.ThisAddress, TestItem);
+            AllCustomers.ThisCustomer = TestItem;
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
         [TestMethod]
         public void ListAndCountOK()
@@ -78,10 +78,10 @@ namespace Testing1
             TestItem.DateAdded = DateTime.Now.Date;
             TestItem.DateOfBirth = Convert.ToDateTime("01/01/2000");
 
-            AllCustomers.ThisAddress = TestItem;
+            AllCustomers.ThisCustomer = TestItem;
             PrimaryKey = AllCustomers.Add();
             TestItem.AccountNo = PrimaryKey;
-            Assert.AreEqual(AllCustomers.ThisAddress, TestItem);
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
     }
 }
