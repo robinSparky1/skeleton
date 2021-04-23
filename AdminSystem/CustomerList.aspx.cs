@@ -30,4 +30,19 @@ public partial class _1_List : System.Web.UI.Page
         Session["AccountNo"] = -1;
         Response.Redirect("CustomerDataEntry.aspx");
     }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 AddressNo;
+        if (lstCustomerList.SelectedIndex != -1)
+        {
+            AddressNo = Convert.ToInt32(lstCustomerList.SelectedValue);
+            Session["AddressNo"] = AddressNo;
+            Response.Redirect("CustomerDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record delete from the list";
+        }
+    }
 }
