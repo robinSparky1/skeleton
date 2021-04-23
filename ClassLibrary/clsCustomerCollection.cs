@@ -72,6 +72,7 @@ namespace ClassLibrary
         public int Update()
         {
             clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@AccountNo", mThisCustomer.AccountNo);
             DB.AddParameter("@CustomerName", mThisCustomer.CustomerName);
             DB.AddParameter("@CustomerEmail", mThisCustomer.CustomerEmail);
             DB.AddParameter("@DateAdded", mThisCustomer.DateAdded);
