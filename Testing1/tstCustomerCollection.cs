@@ -33,14 +33,6 @@ namespace Testing1
             Assert.AreEqual(AllCustomers.CustomerList, TestList);
         }
         [TestMethod]
-        public void CountPropertyOK()
-        {
-            clsCustomerCollection AllCustomers = new clsCustomerCollection();
-            Int32 SomeCount = 0;
-            AllCustomers.Count = SomeCount;
-            Assert.AreEqual(AllCustomers.Count, SomeCount);
-        }
-        [TestMethod]
         public void ThisAddressPropertyOK()
         {
             clsCustomerCollection AllCustomers = new clsCustomerCollection();
@@ -72,12 +64,6 @@ namespace Testing1
             TestList.Add(TestItem);
             AllCustomers.CustomerList = TestList;
             Assert.AreEqual(AllCustomers.Count, TestList.Count);
-        }
-        [TestMethod]
-        public void TwoRecordsPresent()
-        {
-            clsCustomerCollection AllCustomers = new clsCustomerCollection();
-            Assert.AreEqual(AllCustomers.Count, 2);
         }
     }
 }

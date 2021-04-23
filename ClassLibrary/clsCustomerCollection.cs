@@ -8,24 +8,24 @@ namespace ClassLibrary
         List<clsCustomer> mAddressList = new List<clsCustomer>();
         public clsCustomerCollection()
         {
-            clsCustomer TestItem = new clsCustomer();
-            TestItem.AccountVerified = true;
-            TestItem.AccountNo = 1;
-            TestItem.Ballance = 1;
-            TestItem.CustomerName = "johny";
-            TestItem.CustomerEmail = "Heres@johny.com";
-            TestItem.DateAdded = DateTime.Now.Date;
-            TestItem.DateOfBirth = Convert.ToDateTime("01/01/2000");
-            mAddressList.Add(TestItem);
-            TestItem = new clsCustomer();
-            TestItem.AccountVerified = true;
-            TestItem.AccountNo = 1;
-            TestItem.Ballance = 1;
-            TestItem.CustomerName = "Wendy";
-            TestItem.CustomerEmail = "Wendy@door.com";
-            TestItem.DateAdded = DateTime.Now.Date;
-            TestItem.DateOfBirth = Convert.ToDateTime("01/01/2000");
-            mAddressList.Add(TestItem);
+            Int32 Index = 0;
+            Int32 RecordCount = 0;
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblCustomer_SelectAll");
+            RecordCount = DB.Count;
+            while (Index < RecordCount)
+            {
+                clsCustomer TestItem = new clsCustomer();
+                TestItem.AccountVerified = Convert.ToBoolean(DB.DataTable.Rows[Index]["AccountVerified"]);
+                TestItem.AccountNo = Convert.ToInt32(DB.DataTable.Rows[Index]["AccountNo"]);
+                TestItem.Ballance = Convert.ToInt32(DB.DataTable.Rows[Index]["Ballance"]);
+                TestItem.CustomerName = Convert.ToString(DB.DataTable.Rows[Index]["CustomerName"]);
+                TestItem.CustomerEmail = Convert.ToString(DB.DataTable.Rows[Index]["CustomerEmail"]);
+                TestItem.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
+                TestItem.DateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateOfBirth"]);
+                mAddressList.Add(TestItem);
+                Index++;
+            }
         }
         public List<clsCustomer> CustomerList {
             get {
