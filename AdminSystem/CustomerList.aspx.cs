@@ -60,4 +60,25 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "please select a record to delete from the list";
         }
     }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsCustomerCollection Customers = new clsCustomerCollection();
+        Customers.ReportByName(txtFilter.Text);
+        lstCustomerList.DataSource = Customers.CustomerList;
+        lstCustomerList.DataValueField = "AccountNo";
+        lstCustomerList.DataTextField = "CustomerName";
+        lstCustomerList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsCustomerCollection Customers = new clsCustomerCollection();
+        Customers.ReportByName("");
+        txtFilter.Text = "";
+        lstCustomerList.DataSource = Customers.CustomerList;
+        lstCustomerList.DataValueField = "AccountNo";
+        lstCustomerList.DataTextField = "CustomerName";
+        lstCustomerList.DataBind();
+    }
 }
