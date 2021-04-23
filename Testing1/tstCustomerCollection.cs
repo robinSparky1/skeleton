@@ -74,8 +74,8 @@ namespace Testing1
             TestItem.AccountVerified = true;
             TestItem.AccountNo = 1;
             TestItem.Ballance = 1;
-            TestItem.CustomerName = "johny";
-            TestItem.CustomerEmail = "Heres@johny.com";
+            TestItem.CustomerName = "Gary";
+            TestItem.CustomerEmail = "Gary@Vault108.com";
             TestItem.DateAdded = DateTime.Now.Date;
             TestItem.DateOfBirth = Convert.ToDateTime("01/01/2000");
 
@@ -92,8 +92,8 @@ namespace Testing1
             Int32 PrimaryKey = 0;
             TestItem.AccountVerified = true;
             TestItem.Ballance = 1;
-            TestItem.CustomerName = "johny";
-            TestItem.CustomerEmail = "Heres@johny.com";
+            TestItem.CustomerName = "Gary";
+            TestItem.CustomerEmail = "Gary@Vault108.com";
             TestItem.DateAdded = DateTime.Now.Date;
             TestItem.DateOfBirth = Convert.ToDateTime("01/01/2000");
             AllCustomers.ThisCustomer = TestItem;
@@ -102,8 +102,8 @@ namespace Testing1
             
             TestItem.AccountVerified = false;
             TestItem.Ballance = 3;
-            TestItem.CustomerName = "richard";
-            TestItem.CustomerEmail = "rich@ard.com";
+            TestItem.CustomerName = "Wanderer";
+            TestItem.CustomerEmail = "Lone@Vault101.com";
             TestItem.DateAdded = DateTime.Now.Date;
             TestItem.DateOfBirth = Convert.ToDateTime("01/01/2000");
 
@@ -111,6 +111,63 @@ namespace Testing1
             PrimaryKey = AllCustomers.Update();
             AllCustomers.ThisCustomer.Find(PrimaryKey);
             Assert.AreEqual(AllCustomers.ThisCustomer,TestItem);
+        }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomer TestItem = new clsCustomer();
+            Int32 PrimaryKey = 0;
+            TestItem.AccountVerified = true;
+            TestItem.Ballance = 1;
+            TestItem.CustomerName = "Gary";
+            TestItem.CustomerEmail = "Gary@Vault108.com";
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.DateOfBirth = Convert.ToDateTime("01/01/2000");
+            AllCustomers.ThisCustomer = TestItem;
+            PrimaryKey = AllCustomers.Add();
+            TestItem.AccountNo = PrimaryKey;
+
+            AllCustomers.Delete();
+            Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
+        }
+        [TestMethod]
+        public void ReportByNameMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            FilteredCustomers.ReportByName("");
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+        }
+        [TestMethod]
+        public void ReportByNameMethodNoneFound()
+        {
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            FilteredCustomers.ReportByName("Cthulu");
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
+        [TestMethod]
+        public void ReportByNameTestDataFound()
+        {
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            Boolean OK = true;
+            FilteredCustomers.ReportByName("julia");
+            if (FilteredCustomers.Count == 2)
+            {
+                if (FilteredCustomers.CustomerList[0].AccountNo != 1)
+                {
+                    OK = false;
+                }
+                if (FilteredCustomers.CustomerList[1].AccountNo != 2)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = true;
+            }
+            Assert.IsTrue(OK);
         }
     }
 }
