@@ -59,7 +59,14 @@ namespace ClassLibrary
 
         public int Add()
         {
-            throw new NotImplementedException();
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerName",mThisCustomer.CustomerName);
+            DB.AddParameter("@CustomerEmail", mThisCustomer.CustomerEmail);
+            DB.AddParameter("@DateAdded", mThisCustomer.DateAdded);
+            DB.AddParameter("@DateOfBirth", mThisCustomer.DateOfBirth);
+            DB.AddParameter("@AccountVerified", mThisCustomer.AccountVerified);
+            DB.AddParameter("@Ballance", mThisCustomer.Ballance);
+            return DB.Execute("sproc_tblCustomer_Insert");
         }
     }
 }

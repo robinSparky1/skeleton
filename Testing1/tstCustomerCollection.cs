@@ -65,6 +65,7 @@ namespace Testing1
             AllCustomers.CustomerList = TestList;
             Assert.AreEqual(AllCustomers.Count, TestList.Count);
         }
+        [TestMethod]
         public void AddMethodOK()
         {
             clsCustomerCollection AllCustomers = new clsCustomerCollection();
