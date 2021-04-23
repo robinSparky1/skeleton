@@ -16,9 +16,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsCustomer ACustomer = new clsCustomer();
-        ACustomer.CustomerName = txtCustomerName.Text;
-        Session["ACustomer"] = ACustomer;
-        Response.Redirect("CustomerViewer.aspx");
+        string CustomerName = txtCustomerName.Text;
+        string CustomerEmail = txtCustomerEmail.Text;
+        string DateOfBirth = txtDateOfBirth.Text;
+        string DateAdded = txtDateAdded.Text;
+        string Ballance = txtBallance.Text;
+        string Error="";
+        Error = ACustomer.Valid(CustomerName, CustomerEmail, DateAdded, DateOfBirth, Ballance);
+        if (Error == "")
+        {
+            ACustomer.CustomerName = CustomerName;
+            ACustomer.CustomerEmail = CustomerEmail;
+            ACustomer.DateOfBirth = Convert.ToDateTime(DateOfBirth);
+            ACustomer.DateAdded = Convert.ToDateTime(DateAdded);
+            ACustomer.Ballance = Convert.ToInt32(Ballance);
+            Session["ACustomer"] = ACustomer;
+            Response.Redirect("CustomerViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+        
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
