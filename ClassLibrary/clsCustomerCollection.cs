@@ -88,5 +88,10 @@ namespace ClassLibrary
             DB.AddParameter("@AccountNo", mThisCustomer.AccountNo);
             DB.Execute("sproc_tblCustomer_Delete");
         }
+
+        public void ReportByName(string v)
+        {
+            
+        }
     }
 }

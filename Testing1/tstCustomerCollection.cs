@@ -131,5 +131,20 @@ namespace Testing1
             AllCustomers.Delete();
             Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
         }
+        [TestMethod]
+        public void ReportByNameMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            FilteredCustomers.ReportByName("");
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+        }
+        [TestMethod]
+        public void ReportByNameMethodNoneFound()
+        {
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            FilteredCustomers.ReportByName("Cthulu");
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
     }
 }
