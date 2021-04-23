@@ -146,5 +146,28 @@ namespace Testing1
             FilteredCustomers.ReportByName("Cthulu");
             Assert.AreEqual(0, FilteredCustomers.Count);
         }
+        [TestMethod]
+        public void ReportByNameTestDataFound()
+        {
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            Boolean OK = true;
+            FilteredCustomers.ReportByName("julia");
+            if (FilteredCustomers.Count == 2)
+            {
+                if (FilteredCustomers.CustomerList[0].AccountNo != 1)
+                {
+                    OK = false;
+                }
+                if (FilteredCustomers.CustomerList[1].AccountNo != 2)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = true;
+            }
+            Assert.IsTrue(OK);
+        }
     }
 }
