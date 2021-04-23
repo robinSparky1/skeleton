@@ -46,5 +46,10 @@ namespace ClassLibrary
             }
         }
         public clsCustomer ThisAddress { get; set; }
+
+        public int Add()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
