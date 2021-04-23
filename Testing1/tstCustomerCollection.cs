@@ -73,5 +73,11 @@ namespace Testing1
             AllCustomers.CustomerList = TestList;
             Assert.AreEqual(AllCustomers.Count, TestList.Count);
         }
+        [TestMethod]
+        public void TwoRecordsPresent()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            Assert.AreEqual(AllCustomers.Count, 2);
+        }
     }
 }
