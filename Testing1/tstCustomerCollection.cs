@@ -45,8 +45,8 @@ namespace Testing1
             TestItem.DateAdded = DateTime.Now.Date;
             TestItem.DateOfBirth = Convert.ToDateTime("01/01/2000");
             
-            AllCustomers.ThisAddress = TestItem;
-            Assert.AreEqual(AllCustomers.ThisAddress, TestItem);
+            AllCustomers.ThisCustomer = TestItem;
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
         [TestMethod]
         public void ListAndCountOK()
@@ -64,6 +64,53 @@ namespace Testing1
             TestList.Add(TestItem);
             AllCustomers.CustomerList = TestList;
             Assert.AreEqual(AllCustomers.Count, TestList.Count);
+        }
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomer TestItem = new clsCustomer();
+            Int32 PrimaryKey = 0;
+            TestItem.AccountVerified = true;
+            TestItem.AccountNo = 1;
+            TestItem.Ballance = 1;
+            TestItem.CustomerName = "johny";
+            TestItem.CustomerEmail = "Heres@johny.com";
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.DateOfBirth = Convert.ToDateTime("01/01/2000");
+
+            AllCustomers.ThisCustomer = TestItem;
+            PrimaryKey = AllCustomers.Add();
+            TestItem.AccountNo = PrimaryKey;
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+        }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomer TestItem = new clsCustomer();
+            Int32 PrimaryKey = 0;
+            TestItem.AccountVerified = true;
+            TestItem.Ballance = 1;
+            TestItem.CustomerName = "johny";
+            TestItem.CustomerEmail = "Heres@johny.com";
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.DateOfBirth = Convert.ToDateTime("01/01/2000");
+            AllCustomers.ThisCustomer = TestItem;
+            PrimaryKey = AllCustomers.Add();
+            TestItem.AccountNo = PrimaryKey;
+            
+            TestItem.AccountVerified = false;
+            TestItem.Ballance = 3;
+            TestItem.CustomerName = "richard";
+            TestItem.CustomerEmail = "rich@ard.com";
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.DateOfBirth = Convert.ToDateTime("01/01/2000");
+
+            AllCustomers.ThisCustomer = TestItem;
+            PrimaryKey = AllCustomers.Update();
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            Assert.AreEqual(AllCustomers.ThisCustomer,TestItem);
         }
     }
 }

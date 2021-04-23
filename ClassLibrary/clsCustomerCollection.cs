@@ -5,7 +5,8 @@ namespace ClassLibrary
 {
     public class clsCustomerCollection
     {
-        List<clsCustomer> mAddressList = new List<clsCustomer>();
+        List<clsCustomer> mCustomerList = new List<clsCustomer>();
+        clsCustomer mThisCustomer = new clsCustomer();
         public clsCustomerCollection()
         {
             Int32 Index = 0;
@@ -23,28 +24,62 @@ namespace ClassLibrary
                 TestItem.CustomerEmail = Convert.ToString(DB.DataTable.Rows[Index]["CustomerEmail"]);
                 TestItem.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
                 TestItem.DateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateOfBirth"]);
-                mAddressList.Add(TestItem);
+                mCustomerList.Add(TestItem);
                 Index++;
             }
         }
         public List<clsCustomer> CustomerList {
             get {
-                return mAddressList;
+                return mCustomerList;
             }
             set {
-                mAddressList = value;
+                mCustomerList = value;
             }
         }
         public int Count {
             get
             {
-                return mAddressList.Count;
+                return mCustomerList.Count;
             }
             set
             {
                 
             }
         }
-        public clsCustomer ThisAddress { get; set; }
+        public clsCustomer ThisCustomer {
+            get
+            {
+                return mThisCustomer;
+            }
+            set
+            {
+                mThisCustomer= value;
+            }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerName",mThisCustomer.CustomerName);
+            DB.AddParameter("@CustomerEmail", mThisCustomer.CustomerEmail);
+            DB.AddParameter("@DateAdded", mThisCustomer.DateAdded);
+            DB.AddParameter("@DateOfBirth", mThisCustomer.DateOfBirth);
+            DB.AddParameter("@AccountVerified", mThisCustomer.AccountVerified);
+            DB.AddParameter("@Ballance", mThisCustomer.Ballance);
+            return DB.Execute("sproc_tblCustomer_Insert");
+        }
+
+        public int Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@AccountNo", mThisCustomer.AccountNo);
+            DB.AddParameter("@CustomerName", mThisCustomer.CustomerName);
+            DB.AddParameter("@CustomerEmail", mThisCustomer.CustomerEmail);
+            DB.AddParameter("@DateAdded", mThisCustomer.DateAdded);
+            DB.AddParameter("@DateOfBirth", mThisCustomer.DateOfBirth);
+            DB.AddParameter("@AccountVerified", mThisCustomer.AccountVerified);
+            DB.AddParameter("@Ballance", mThisCustomer.Ballance);
+            return DB.Execute("sproc_tblCustomer_Update");
+        }
     }
 }

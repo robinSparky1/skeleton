@@ -8,8 +8,30 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 AccountNo;
     protected void Page_Load(object sender, EventArgs e)
     {
+        AccountNo = Convert.ToInt32(Session["AccountNo"]);
+        if (IsPostBack == false)
+        {
+            if (AccountNo != -1)
+            {
+                DisplayCustomers();
+            }
+        }
+    }
+    void DisplayCustomers()
+    {
+        clsCustomerCollection Customers = new clsCustomerCollection();
+        Customers.ThisCustomer.Find(AccountNo);
+        txtAccountNo.Text = Customers.ThisCustomer.AccountNo.ToString();
+        txtCustomerName.Text = Customers.ThisCustomer.CustomerName;
+        txtCustomerEmail.Text = Customers.ThisCustomer.CustomerEmail;
+        txtDateAdded.Text = Customers.ThisCustomer.DateAdded.ToString();
+        txtDateOfBirth.Text = Customers.ThisCustomer.DateOfBirth.ToString();
+        chkAccountVerified.Checked = Customers.ThisCustomer.AccountVerified;
+        txtBallance.Text = Customers.ThisCustomer.Ballance.ToString();
+
 
     }
 
@@ -30,8 +52,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ACustomer.DateOfBirth = Convert.ToDateTime(DateOfBirth);
             ACustomer.DateAdded = Convert.ToDateTime(DateAdded);
             ACustomer.Ballance = Convert.ToInt32(Ballance);
-            Session["ACustomer"] = ACustomer;
-            Response.Redirect("CustomerViewer.aspx");
+            ACustomer.AccountVerified = chkAccountVerified.Checked;
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            if (AccountNo == -1)
+            {
+                CustomerList.ThisCustomer.Find(AccountNo);
+                CustomerList.ThisCustomer = ACustomer;
+                CustomerList.Update();
+            }
+            else
+            {
+                CustomerList.ThisCustomer = ACustomer;
+                CustomerList.Add();
+                
+            }
+            Response.Redirect("CustomerList.aspx");
+
         }
         else
         {
