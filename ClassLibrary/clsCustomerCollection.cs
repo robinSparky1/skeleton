@@ -4,8 +4,25 @@ namespace ClassLibrary
 {
     public class clsCustomerCollection
     {
-        public List<clsCustomer> CustomerList { get; set; }
-        public int Count { get; set; }
-        public List<clsCustomer> ThisAddress { get; set; }
+        List<clsCustomer> mAddressList = new List<clsCustomer>();
+        public List<clsCustomer> CustomerList {
+            get {
+                return mAddressList;
+            }
+            set {
+                mAddressList = value;
+            }
+        }
+        public int Count {
+            get
+            {
+                return mAddressList.Count;
+            }
+            set
+            {
+                
+            }
+        }
+        public clsCustomer ThisAddress { get; set; }
     }
 }
