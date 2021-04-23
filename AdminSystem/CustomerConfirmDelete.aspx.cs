@@ -16,6 +16,9 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
 
     protected void btnYes_Click(object sender, EventArgs e)
     {
-        clsCustomerCollection
+        clsCustomerCollection CustomerBook = new clsCustomerCollection();
+        CustomerBook.ThisCustomer.Find(AccountNo);
+        CustomerBook.Delete();
+        Response.Redirect("CustomerList.aspx");
     }
 }

@@ -74,8 +74,8 @@ namespace Testing1
             TestItem.AccountVerified = true;
             TestItem.AccountNo = 1;
             TestItem.Ballance = 1;
-            TestItem.CustomerName = "johny";
-            TestItem.CustomerEmail = "Heres@johny.com";
+            TestItem.CustomerName = "Gary";
+            TestItem.CustomerEmail = "Gary@Vault108.com";
             TestItem.DateAdded = DateTime.Now.Date;
             TestItem.DateOfBirth = Convert.ToDateTime("01/01/2000");
 
@@ -92,8 +92,8 @@ namespace Testing1
             Int32 PrimaryKey = 0;
             TestItem.AccountVerified = true;
             TestItem.Ballance = 1;
-            TestItem.CustomerName = "johny";
-            TestItem.CustomerEmail = "Heres@johny.com";
+            TestItem.CustomerName = "Gary";
+            TestItem.CustomerEmail = "Gary@Vault108.com";
             TestItem.DateAdded = DateTime.Now.Date;
             TestItem.DateOfBirth = Convert.ToDateTime("01/01/2000");
             AllCustomers.ThisCustomer = TestItem;
@@ -102,8 +102,8 @@ namespace Testing1
             
             TestItem.AccountVerified = false;
             TestItem.Ballance = 3;
-            TestItem.CustomerName = "richard";
-            TestItem.CustomerEmail = "rich@ard.com";
+            TestItem.CustomerName = "Wanderer";
+            TestItem.CustomerEmail = "Lone@Vault101.com";
             TestItem.DateAdded = DateTime.Now.Date;
             TestItem.DateOfBirth = Convert.ToDateTime("01/01/2000");
 
@@ -120,8 +120,8 @@ namespace Testing1
             Int32 PrimaryKey = 0;
             TestItem.AccountVerified = true;
             TestItem.Ballance = 1;
-            TestItem.CustomerName = "johny";
-            TestItem.CustomerEmail = "Heres@johny.com";
+            TestItem.CustomerName = "Gary";
+            TestItem.CustomerEmail = "Gary@Vault108.com";
             TestItem.DateAdded = DateTime.Now.Date;
             TestItem.DateOfBirth = Convert.ToDateTime("01/01/2000");
             AllCustomers.ThisCustomer = TestItem;
