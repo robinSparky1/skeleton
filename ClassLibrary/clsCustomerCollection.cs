@@ -81,5 +81,12 @@ namespace ClassLibrary
             DB.AddParameter("@Ballance", mThisCustomer.Ballance);
             return DB.Execute("sproc_tblCustomer_Update");
         }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@AccountNo", mThisCustomer.AccountNo);
+            DB.Execute("sproc_tblCustomer_Delete");
+        }
     }
 }
