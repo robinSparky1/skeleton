@@ -20,7 +20,7 @@ public partial class _1_List : System.Web.UI.Page
         clsCustomerCollection Customers = new clsCustomerCollection();
         lstCustomerList.DataSource = Customers.CustomerList;
         lstCustomerList.DataValueField = "AccountNo";
-        lstCustomerList.DataValueField = "CustomerName";
+        lstCustomerList.DataTextField = "CustomerName";
         lstCustomerList.DataBind();
 
     }
@@ -33,11 +33,11 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void btnEdit_Click(object sender, EventArgs e)
     {
-        Int32 AddressNo;
+        Int32 AccountNo;
         if (lstCustomerList.SelectedIndex != -1)
         {
-            AddressNo = Convert.ToInt32(lstCustomerList.SelectedValue);
-            Session["AddressNo"] = AddressNo;
+            AccountNo = Convert.ToInt32(lstCustomerList.SelectedValue);
+            Session["AccountNo"] = AccountNo;
             Response.Redirect("CustomerDataEntry.aspx");
         }
         else

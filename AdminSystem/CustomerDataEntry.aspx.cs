@@ -11,7 +11,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     Int32 AccountNo;
     protected void Page_Load(object sender, EventArgs e)
     {
-        AccountNo = Convert.ToInt32(Session["addressNo"]);
+        AccountNo = Convert.ToInt32(Session["AccountNo"]);
         if (IsPostBack == false)
         {
             if (AccountNo != -1)
