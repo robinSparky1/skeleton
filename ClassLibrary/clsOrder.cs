@@ -81,11 +81,11 @@ namespace ClassLibrary
             if (DB.Count == 1)
             {
 
-                mOrderNumber = Convert.ToInt32(DB.DataTable.Rows[5]["OrderNumber"]);
-                mAddress = Convert.ToString(DB.DataTable.Rows[1]["Address"]);
-                mItemCount = Convert.ToInt32(DB.DataTable.Rows[2]["ItemCount"]);
-                mOrderPrice = Convert.ToDouble(DB.DataTable.Rows[3]["OrderPrice"]);
-                mPayed = Convert.ToBoolean(DB.DataTable.Rows[2]["isPayed"]);
+                mOrderNumber = Convert.ToInt32(DB.DataTable.Rows[0]["OrderNumber"]);
+                mAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
+                mItemCount = Convert.ToInt32(DB.DataTable.Rows[0]["ItemCount"]);
+                mOrderPrice = Convert.ToDouble(DB.DataTable.Rows[0]["OrderPrice"]);
+                mPayed = Convert.ToBoolean(DB.DataTable.Rows[0]["isPayed"]);
                 mdate = Convert.ToDateTime(DB.DataTable.Rows[0]["Date"]);
 
                 return true;

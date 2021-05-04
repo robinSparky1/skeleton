@@ -11,6 +11,8 @@
         <asp:Label ID="lblAddressNo" runat="server" Text="Address Number"></asp:Label>
 &nbsp;&nbsp;
         <asp:TextBox ID="txtOrderNumber" runat="server" style="margin-bottom: 0px"></asp:TextBox>
+        &nbsp;&nbsp;
+        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
         <br />
         <br />
         Item Count&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtItemCount" runat="server"></asp:TextBox>
@@ -23,12 +25,12 @@
         <br />
         <asp:Label ID="lblAddress" runat="server" Text="Address"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtAddress" runat="server" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
         <br />
         <br />
         <asp:Label ID="lblDate" runat="server" Text="Purchase Date" Width="200px"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtDate" runat="server"></asp:TextBox>
         <br />
         <br />
 &nbsp;<asp:CheckBox ID="cbPayed" runat="server" Text="Payed" />

@@ -10,7 +10,7 @@ namespace TestingOrder
         public object TestData { get; private set; }
 
         [TestMethod]
-        public void TestOrderNoFound() {
+        public void TestOrderFound() {
             clsOrder anOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
@@ -88,7 +88,7 @@ namespace TestingOrder
             clsOrder anOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderNumber = 90;
+            Int32 OrderNumber = 1;
             Found = anOrder.Find(OrderNumber);
 
             if (anOrder.Date != Convert.ToDateTime("23/09/2010"))
