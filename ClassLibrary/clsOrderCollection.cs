@@ -70,5 +70,10 @@ namespace ClassLibrary
 
 
         }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

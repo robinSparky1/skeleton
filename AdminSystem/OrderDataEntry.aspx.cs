@@ -39,7 +39,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Response.Redirect("OrderList.aspx");
         }
         else {
-            lblError.Text = Error;        }
+            lblError.Text = Error;
+        }
      
     }
 

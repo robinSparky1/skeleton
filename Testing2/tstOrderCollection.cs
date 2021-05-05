@@ -91,6 +91,36 @@ namespace Testing2
 
         
         }
+
+        [TestMethod]
+        public void UpdateMethodUK() {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrder TestItem = new clsOrder();
+            Int32 PrimaryKey = 0;
+            TestItem.Payed = true;
+            TestItem.OrderNumber = 1;
+            TestItem.OrderPrice = 10;
+            TestItem.ItemCount = 2;
+            TestItem.Address = "ankara";
+            TestItem.Date = DateTime.Now.Date;
+
+            AllOrders.ThisOrder = TestItem;
+            PrimaryKey = AllOrders.Add();
+            TestItem.OrderNumber = PrimaryKey;
+
+            TestItem.Payed = true;
+            TestItem.OrderNumber = 1;
+            TestItem.OrderPrice = 10;
+            TestItem.ItemCount = 2;
+            TestItem.Address = "ankara";
+            TestItem.Date = DateTime.Now.Date;
+
+            AllOrders.ThisOrder = TestItem;
+            AllOrders.Update();
+
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+        }
    
     }
 }
