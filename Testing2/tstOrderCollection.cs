@@ -36,14 +36,7 @@ namespace Testing2
         AllOrders.OrderList = TestList;
         Assert.AreEqual(AllOrders.OrderList, TestList);
         }
-
-        [TestMethod]
-        public void CountPropertyOK() {
-            clsOrderCollection allOrders = new clsOrderCollection();
-            Int32 SomeCount = 0;
-            allOrders.Count = SomeCount;
-            Assert.AreEqual(allOrders.Count, SomeCount);
-        }
+        
 
         [TestMethod]
         public void ThisOrderPropertyOK() {
@@ -79,10 +72,25 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void two() {
-            clsOrderCollection a = new clsOrderCollection();
-            Assert.AreEqual(a.Count, 2);
-           
+        public void AddMethodOK() {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrder TestItem = new clsOrder();
+            Int32 PrimaryKey = 0;
+            TestItem.Payed = true;
+            TestItem.OrderNumber = 1;
+            TestItem.OrderPrice = 10;
+            TestItem.ItemCount = 2;
+            TestItem.Address = "ankara";
+            TestItem.Date = DateTime.Now.Date;
+
+            AllOrders.ThisOrder = TestItem;
+            PrimaryKey = AllOrders.Add();
+            TestItem.OrderNumber = PrimaryKey;
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+
+        
         }
+   
     }
 }

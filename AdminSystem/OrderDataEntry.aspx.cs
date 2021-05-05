@@ -31,11 +31,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             anOrder.OrderPrice = Convert.ToDouble(OrderPrice);
             anOrder.ItemCount = Convert.ToInt32(ItemCount);
             anOrder.Date = Convert.ToDateTime(Date);
+            anOrder.Payed = cbPayed.Checked;
+
+            clsOrderCollection OrderList = new clsOrderCollection();
+            OrderList.ThisOrder = anOrder;
+            OrderList.Add();
+            Response.Redirect("OrderList.aspx");
         }
         else {
             lblError.Text = Error;        }
-        Session["anOrder"] = anOrder;
-        Response.Write("OrderViewer.aspx");
+     
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
