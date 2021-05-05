@@ -66,11 +66,13 @@ namespace ClassLibrary
             DB.AddParameter("@Date", mThisOrder.Date);
 
             return DB.Execute("sproc_tblOrder_Insert");
-
-
-
         }
 
+        public void Delete() {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderNumber", mThisOrder.OrderNumber);
+            DB.Execute("sproc_tblOrder_Delete");
+        }
         public void Update()
         {
             clsDataConnection DB = new clsDataConnection();
