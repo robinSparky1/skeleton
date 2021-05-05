@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClassLibrary;
 
-public partial class _1_List : System.Web.UI.Page
+public partial class AnOrder : System.Web.UI.Page
 {
     Int32 OrderNumber;
     protected void Page_Load(object sender, EventArgs e)
@@ -21,12 +21,17 @@ public partial class _1_List : System.Web.UI.Page
 
     void DisplayOrders()
     {
-        clsOrderCollection Orders = new clsOrderCollection();
+        clsOrderCollection OrdersPage = new clsOrderCollection();
         //lstOrderList.DataSource = Orders.OrderList;
         //lstOrderList.DataValueField = "OrderNumber";
         //lstOrderList.DataTextField = "OrderPrice";
         //lstOrderList.DataBind();
         Orders.ThisOrder.Find(OrderNumber);
+        txtAddress.Text = OrdersPage.ThisOrder.OrderNumber.ToString();
+        txtOrderNumber.Text = OrdersPage.ThisOrder.OrderNumber;
+        txtItemCount.Text = OrdersPage.ThisOrder.ItemCount.ToString();
+        txtDate.Text = OrdersPage.ThisOrder.Date.ToString();
+        txtOrderPrice = OrdersPage.ThisOrder.OrderPrice.ToString();
     }
 
     protected void lstOrderList_SelectedIndexChanged(object sender, EventArgs e)

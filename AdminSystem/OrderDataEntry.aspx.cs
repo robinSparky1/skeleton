@@ -17,6 +17,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsOrder anOrder = new clsOrder();
 
+        string OrderNumber = txtOrderNumber.Text;
         string Address = txtAddress.Text;
         string ItemCount = txtItemCount.Text;
         string OrderPrice = txtOrderPrice.Text;
@@ -27,6 +28,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         if (Error == "")
         {
+            anOrder.OrderNumber = Convert.ToInt32(OrderNumber);
             anOrder.Address = Address;
             anOrder.OrderPrice = Convert.ToDouble(OrderPrice);
             anOrder.ItemCount = Convert.ToInt32(ItemCount);
@@ -34,8 +36,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
             anOrder.Payed = cbPayed.Checked;
 
             clsOrderCollection OrderList = new clsOrderCollection();
-            OrderList.ThisOrder = anOrder;
-            OrderList.Add();
+
+            if (Convert.ToInt32(OrderNumber) == -1)
+            {
+                OrderList.ThisOrder = anOrder;
+                OrderList.Add();
+            }
+            else {
+                OrderList.ThisOrder.Find(Convert.ToInt32(OrderNumber));
+                OrderList.ThisOrder = anOrder;
+                OrderList.Update();
+            }
+            
             Response.Redirect("OrderList.aspx");
         }
         else {
