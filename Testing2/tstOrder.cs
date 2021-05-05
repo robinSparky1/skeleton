@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TestingOrder
 {
     [TestClass]
-    public class UnitTest1
+    public class tstOrder
     {
         string Address = "LE70 1HQ";
         string ItemCount = "20";
@@ -29,7 +29,7 @@ namespace TestingOrder
         }
 
         [TestMethod]
-        public void TestItemCountFound() {
+        public void TestItemCountNoFound() {
             clsOrder anOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
@@ -43,15 +43,15 @@ namespace TestingOrder
         }
 
         [TestMethod]
-        public void TestAddressFound()
+        public void TestAddressNoFound()
         {
             clsOrder anOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderNumber = 2;
+            Int32 OrderNumber = 1;
             Found = anOrder.Find(OrderNumber);
 
-            if (anOrder.Address != "ankara")
+            if (anOrder.Address == "paris")
             {
                 OK = false;
             }
