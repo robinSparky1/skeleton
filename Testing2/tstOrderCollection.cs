@@ -144,6 +144,23 @@ namespace Testing2
             Boolean Found = AllOrders.ThisAddress.Find(PrimaryKey);
             Assert.IsFalse(Found);
         }
-   
+
+        [TestMethod]
+        public void ReportByAddressMethodOK() {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            FilteredOrders.ReportByAddress("");
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count)
+        }
+
+        [TestMethod]
+        public void ReportByAddressNoneFound(string Address)
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            FilteredOrders.ReportByAddress("xxxxx");
+            Assert.AreEqual(0, FilteredOrders.Count);
+
+        }
+
     }
 }

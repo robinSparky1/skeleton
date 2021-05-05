@@ -85,5 +85,9 @@ namespace ClassLibrary
 
             DB.Execute("sproc_tblOrder_Update");
         }
+
+        public void RepostByAddress(string address) {
+            clsDataConnection DB = new clsDataConnection();
+        }
     }
 }
