@@ -7,6 +7,7 @@ namespace ClassLibrary
     {
         List<clsOrder> mOrderList = new List<clsOrder>();
         clsOrder mThisOrder = new clsOrder();
+        private List<clsOrder> mAddressList;
 
         public clsOrderCollection() {
 
@@ -14,7 +15,7 @@ namespace ClassLibrary
             Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblOrder_SelectAll");
-            RecordCount = DB.Count;
+            PopulateArray(DB);
             while (Index < RecordCount) {
                 clsOrder anOrder = new clsOrder();
                 anOrder.Payed = Convert.ToBoolean(DB.DataTable.Rows[Index]["isPayed"]);
@@ -86,8 +87,30 @@ namespace ClassLibrary
             DB.Execute("sproc_tblOrder_Update");
         }
 
-        public void RepostByAddress(string address) {
+        public void RepostByAddress(string Address) {
             clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Address", Address);
+            DB.Execute("sproc_tblOrder_FilterByADdress");
+        }
+
+        void PopulateArray(clsDataConnection DB) {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mAddressList = new List<clsOrder>();
+            while (Index < RecordCount)
+            {
+                clsOrder anOrder = new clsOrder();
+                anOrder.Payed = Convert.ToBoolean(DB.DataTable.Rows[Index]["isPayed"]);
+                anOrder.OrderNumber = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderNumber"]);
+                anOrder.ItemCount = Convert.ToInt32(DB.DataTable.Rows[Index]["ItemCount"]);
+                anOrder.OrderPrice = Convert.ToDouble(DB.DataTable.Rows[Index]["OrderPrice"]);
+                anOrder.Address = Convert.ToString(DB.DataTable.Rows[Index]["Address"]);
+                anOrder.Date = Convert.ToDateTime(DB.DataTable.Rows[Index]["Date"]);
+
+                mOrderList.Add(anOrder);
+                Index++;
+            }
         }
     }
 }

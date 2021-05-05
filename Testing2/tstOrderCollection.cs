@@ -162,5 +162,25 @@ namespace Testing2
 
         }
 
+        [TestMethod]
+        public void ReportByAddressTestDataFound() {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            Boolean OK = true;
+            FilteredOrders.ReportByAddress("ankara");
+
+            if (FilteredOrders.Count == 2)
+            {
+                if (FilteredOrders.OrdersList[0].OrderNumber != 3)
+                {
+                    OK = false;
+                }
+            }
+            else{
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }   
+
     }
 }
