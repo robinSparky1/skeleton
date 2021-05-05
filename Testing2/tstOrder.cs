@@ -10,7 +10,7 @@ namespace TestingOrder
         string Address = "LE70 1HQ";
         string ItemCount = "20";
         string OrderPrice = "70";
-        string Date = DateTime.Now.Day.ToString();
+        string Date = DateTime.Now.Date.ToString();
         public object TestData { get; private set; }
 
         [TestMethod]
@@ -95,7 +95,7 @@ namespace TestingOrder
             Int32 OrderNumber = 1;
             Found = anOrder.Find(OrderNumber);
 
-            if (anOrder.Date != Convert.ToDateTime("23/09/2010"))
+            if (anOrder.Date != Convert.ToDateTime("05/05/2021"))
             {
                 OK = false;
             }
@@ -296,7 +296,7 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            ItemCount = ""; 
+            ItemCount = "201"; 
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreNotEqual(Error, "");
         }
@@ -317,7 +317,7 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            OrderPrice = "0";
+            OrderPrice = "-1";
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreNotEqual(Error, "");
         }
@@ -405,7 +405,7 @@ namespace TestingOrder
             TestDate = TestDate.AddYears(-100);
             string Date = TestDate.ToString();
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -418,7 +418,7 @@ namespace TestingOrder
             TestDate = TestDate.AddDays(-1);
             string Date = TestDate.ToString();
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
 
@@ -432,7 +432,7 @@ namespace TestingOrder
             TestDate = TestDate.AddDays(1);
             string Date = TestDate.ToString();
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
 
@@ -446,7 +446,7 @@ namespace TestingOrder
             TestDate = TestDate.AddYears(100);
             string Date = TestDate.ToString();
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
     }

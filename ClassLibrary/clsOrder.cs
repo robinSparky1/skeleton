@@ -123,24 +123,38 @@ namespace ClassLibrary
             else if (address.Length > 50)
             {
 
-                Error = Error + "The address must be less than 50 characters : ";            }            if (Convert.ToInt32(itemCount) == 0)
+                Error = Error + "The address must be less than 50 characters : ";            }            try
             {
-                Error = Error + "The item count may not be blank : ";
-            }
-            else if (Convert.ToInt32(itemCount) > 200)
-            {
+                if (Convert.ToInt32(itemCount) == 0)
+                {
+                    Error = Error + "The item count may not be blank : ";
+                }
+                else if (Convert.ToInt32(itemCount) > 200)
+                {
 
-                Error = Error + "The item count may not be more than 200 : ";
-            }            if (Convert.ToInt32(orderPrice) < 0)
-            {
-
-                Error = Error + "The order price may not be less than 0 : ";
+                    Error = Error + "The item count may not be more than 200 : ";
+                }
             }
-            else if (Convert.ToInt32(orderPrice) > 1000)
-            {
+            catch {
 
-                Error = Error + "The order price may not be more than 1000 : ";
+                Error = Error + " Invalid Item Count : Item Count may not be negative ";
+            }            try
+            {
+                if (Convert.ToInt32(orderPrice) < 0)
+                {
+
+                    Error = Error + "The order price may not be less than 0 : ";
+                }
+                else if (Convert.ToInt32(orderPrice) > 1000)
+                {
+
+                    Error = Error + "The order price may not be more than 1000 : ";
+                }
+            }catch{
+                Error = Error + "The order price may not be negative : ";
+
             }
+
             try
             {
                 DateTemp = Convert.ToDateTime(date);
