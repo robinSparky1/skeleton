@@ -27,7 +27,7 @@ namespace Testing2
         TestItem.Payed = true;
         TestItem.OrderNumber = 1;
         TestItem.OrderPrice = 10;
-        TestItem.OrderNumber = 2;
+        TestItem.ItemCount = 2;
         TestItem.Address = "ankara";
         TestItem.Date = DateTime.Now.Date;
 
@@ -52,7 +52,7 @@ namespace Testing2
             TestOrder.Payed = true;
             TestOrder.OrderNumber = 1;
             TestOrder.OrderPrice = 10;
-            TestOrder.OrderNumber = 2;
+            TestOrder.ItemCount = 2;
             TestOrder.Address = "ankara";
             TestOrder.Date = DateTime.Now.Date;
 
@@ -68,7 +68,7 @@ namespace Testing2
             TestItem.Payed = true;
             TestItem.OrderNumber = 1;
             TestItem.OrderPrice = 10;
-            TestItem.OrderNumber = 2;
+            TestItem.ItemCount = 2;
             TestItem.Address = "ankara";
             TestItem.Date = DateTime.Now.Date;
 
@@ -76,6 +76,13 @@ namespace Testing2
 
             AllOrders.OrderList = TestList;
             Assert.AreEqual(AllOrders.Count, TestList.Count);
+        }
+
+        [TestMethod]
+        public void two() {
+            clsOrderCollection a = new clsOrderCollection();
+            Assert.AreEqual(a.Count, 2);
+           
         }
     }
 }
