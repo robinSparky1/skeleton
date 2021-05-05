@@ -16,10 +16,26 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOk_Click(object sender, EventArgs e)
     {
         clsOrder anOrder = new clsOrder();
-        string orderText = Convert.ToString(anOrder.OrderNumber);
-        orderText= txtOrderNumber.Text;
+
+        string Address = txtAddress.Text;
+        string ItemCount = txtItemCount.Text;
+        string OrderPrice = txtOrderPrice.Text;
+        string Date = txtDate.Text;
+
+        string Error = "";
+        Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
+
+        if (Error == "")
+        {
+            anOrder.Address = Address;
+            anOrder.OrderPrice = Convert.ToDouble(OrderPrice);
+            anOrder.ItemCount = Convert.ToInt32(ItemCount);
+            anOrder.Date = Convert.ToDateTime(Date);
+        }
+        else {
+            lblError.Text = Error;        }
         Session["anOrder"] = anOrder;
-        Response.Redirect("OrderViewer.aspx");
+        Response.Write("OrderViewer.aspx");
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -35,15 +51,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtOrderNumber.Text = anOrder.OrderNumber.ToString();
             txtItemCount.Text = anOrder.ItemCount.ToString();
             txtOrderPrice.Text = anOrder.OrderPrice.ToString();
-            txtAddress.Text = anOrder.AddressNumber.ToString();
+            txtAddress.Text = anOrder.Address.ToString();
             txtDate.Text = anOrder.Date.ToString();
             cbPayed.Checked = anOrder.Payed;
             }
         }
+
+    protected void txtItemCount_TextChanged(object sender, EventArgs e)
+    {
+
     }
 
-    protected void TextBox2_TextChanged(object sender, EventArgs e)
+
+
+    protected void txtAddress_TextChanged(object sender, EventArgs e)
     {
 
     }
 }
+

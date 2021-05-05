@@ -8,8 +8,8 @@ namespace TestingOrder
     public class UnitTest1
     {
         string Address = "LE70 1HQ";
-        int ItemCount = 20;
-        double OrderPrice = 70;
+        string ItemCount = "20";
+        string OrderPrice = "70";
         string Date = DateTime.Now.Day.ToString();
         public object TestData { get; private set; }
 
@@ -51,7 +51,7 @@ namespace TestingOrder
             Int32 OrderNumber = 2;
             Found = anOrder.Find(OrderNumber);
 
-            if (anOrder.AddressNumber != "ankara")
+            if (anOrder.Address != "ankara")
             {
                 OK = false;
             }
@@ -147,8 +147,8 @@ namespace TestingOrder
         public void addressPropertOK() {
             clsOrder anOrder = new clsOrder();
             string TestData = "";
-            anOrder.AddressNumber = TestData;
-            Assert.AreEqual(anOrder.AddressNumber, TestData);
+            anOrder.Address = TestData;
+            Assert.AreEqual(anOrder.Address, TestData);
         }
 
         [TestMethod]
@@ -170,7 +170,7 @@ namespace TestingOrder
         public void AddressMinLessOne() {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            string address = "";
+            string Address = "";
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreNotEqual(Error, "");
         }
@@ -180,7 +180,7 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            string address = "a";
+            string Address = "a";
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreEqual(Error, "");
         }
@@ -190,7 +190,7 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            string address = "aa";
+            string Address = "aa";
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreEqual(Error, "");
         }
@@ -200,7 +200,8 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            string address = Address.PadRight(49, 'a');
+            string Address = "";
+            Address = Address.PadRight(49, 'a');
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreEqual(Error, "");
         }
@@ -210,7 +211,8 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            string address = Address.PadRight(50, 'a');
+            string Address = "";
+            Address = Address.PadRight(50, 'a');
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreEqual(Error, "");
         }
@@ -220,8 +222,8 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            string address = "";
-            address = Address.PadRight(51, 'a');
+            string Address = "";
+            Address = Address.PadRight(51, 'a');
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreNotEqual(Error, "");
         }
@@ -232,8 +234,8 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            string address = "";
-            address = Address.PadRight(25, 'a');
+            string Address = "";
+            Address = Address.PadRight(25, 'a');
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreEqual(Error, "");
         }
@@ -244,7 +246,7 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            ItemCount = 0;
+            ItemCount = "0";
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreNotEqual(Error, "");
         }
@@ -254,7 +256,7 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            ItemCount = 1;
+            ItemCount = "1";
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreEqual(Error, "");
         }
@@ -264,7 +266,7 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            ItemCount = 2;
+            ItemCount = "2";
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreEqual(Error, "");
         }
@@ -274,7 +276,7 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            ItemCount = 199;
+            ItemCount = "199";
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreEqual(Error, "");
         }
@@ -284,7 +286,7 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            ItemCount = 200;
+            ItemCount = "200";
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreEqual(Error, "");
         }
@@ -294,7 +296,7 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            ItemCount = 201; 
+            ItemCount = ""; 
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreNotEqual(Error, "");
         }
@@ -305,7 +307,7 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            ItemCount = 100;
+            ItemCount = "100";
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreEqual(Error, "");
         }
@@ -315,7 +317,7 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            OrderPrice = 0;
+            OrderPrice = "0";
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreNotEqual(Error, "");
         }
@@ -325,7 +327,7 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            OrderPrice = 1;
+            OrderPrice = "1";
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreEqual(Error, "");
         }
@@ -335,7 +337,7 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            OrderPrice = 2;
+            OrderPrice = "2";
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreEqual(Error, "");
         }
@@ -345,7 +347,7 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            OrderPrice = 999;
+            OrderPrice = "999";
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreEqual(Error, "");
         }
@@ -355,7 +357,7 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            OrderPrice = 1000;
+            OrderPrice = "1000";
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreEqual(Error, "");
         }
@@ -365,7 +367,7 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            OrderPrice = 1001;
+            OrderPrice = "1001";
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreNotEqual(Error, "");
         }
@@ -376,7 +378,7 @@ namespace TestingOrder
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
-            OrderPrice = 500;
+            OrderPrice = "500";
             Error = anOrder.Valid(Address, ItemCount, OrderPrice, Date);
             Assert.AreEqual(Error, "");
         }
@@ -421,7 +423,7 @@ namespace TestingOrder
 
 
         [TestMethod]
-        public void DateMinLessOne()
+        public void DateMinPlusOne()
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";
@@ -435,7 +437,7 @@ namespace TestingOrder
 
 
         [TestMethod]
-        public void DateExtremeMin()
+        public void DateExtremeMax()
         {
             clsOrder anOrder = new clsOrder();
             String Error = "";

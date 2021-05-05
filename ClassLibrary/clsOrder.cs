@@ -28,7 +28,7 @@ namespace ClassLibrary
             }
         }
 
-        public string AddressNumber
+        public string Address
         {
             get
             {
@@ -109,7 +109,7 @@ namespace ClassLibrary
                 return false;
             }
         }
-        public string Valid(string address, int itemCount, double orderPrice, string date)
+        public string Valid(string address, string itemCount, string orderPrice, string date)
         {
 
             String Error = "";
@@ -123,20 +123,20 @@ namespace ClassLibrary
             else if (address.Length > 50)
             {
 
-                Error = Error + "The address must be less than 50 characters : ";            }            if (itemCount == 0)
+                Error = Error + "The address must be less than 50 characters : ";            }            if (Convert.ToInt32(itemCount) == 0)
             {
                 Error = Error + "The item count may not be blank : ";
             }
-            else if (itemCount > 200)
+            else if (Convert.ToInt32(itemCount) > 200)
             {
 
                 Error = Error + "The item count may not be more than 200 : ";
-            }            if (orderPrice < 0)
+            }            if (Convert.ToInt32(orderPrice) < 0)
             {
 
                 Error = Error + "The order price may not be less than 0 : ";
             }
-            else if (orderPrice > 1000)
+            else if (Convert.ToInt32(orderPrice) > 1000)
             {
 
                 Error = Error + "The order price may not be more than 1000 : ";
