@@ -73,7 +73,15 @@ namespace ClassLibrary
 
         public void Update()
         {
-            throw new NotImplementedException();
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@OrderNumber", mThisOrder.OrderNumber);
+            DB.AddParameter("@OrderPrice", mThisOrder.OrderPrice);
+            DB.AddParameter("@Itemcount", mThisOrder.ItemCount);
+            DB.AddParameter("@Address", mThisOrder.Address);
+            DB.AddParameter("@isPayed", mThisOrder.Payed);
+
+            DB.Execute("sproc_tblOrder_Update");
         }
     }
 }

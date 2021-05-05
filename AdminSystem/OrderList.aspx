@@ -12,6 +12,6 @@
             <asp:ListBox ID="lstOrderList" runat="server" Height="400px" OnSelectedIndexChanged="lstOrderList_SelectedIndexChanged" Width="400px"></asp:ListBox>
         </div>
         <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
-    </form>
+    &nbsp;</form>
 </body>
 </html>
