@@ -6,14 +6,16 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClassLibrary;
 
-public partial class AnOrder : System.Web.UI.Page
+public partial class _1_OrderList : System.Web.UI.Page
 {
     Int32 OrderNumber;
     protected void Page_Load(object sender, EventArgs e)
     {
         OrderNumber = Convert.ToInt32(Session["OrderNumber"]);
-        if (IsPostBack == false) {
-            if (OrderNumber != -1) {
+        if (IsPostBack == false)
+        {
+            if (OrderNumber != -1)
+            {
                 DisplayOrders();
             }
         }
@@ -21,29 +23,21 @@ public partial class AnOrder : System.Web.UI.Page
 
     void DisplayOrders()
     {
-        clsOrderCollection OrdersPage = new clsOrderCollection();
-        //lstOrderList.DataSource = Orders.OrderList;
-        //lstOrderList.DataValueField = "OrderNumber";
-        //lstOrderList.DataTextField = "OrderPrice";
-        //lstOrderList.DataBind();
-        Orders.ThisOrder.Find(OrderNumber);
-        txtAddress.Text = OrdersPage.ThisOrder.OrderNumber.ToString();
-        txtOrderNumber.Text = OrdersPage.ThisOrder.OrderNumber;
-        txtItemCount.Text = OrdersPage.ThisOrder.ItemCount.ToString();
-        txtDate.Text = OrdersPage.ThisOrder.Date.ToString();
-        txtOrderPrice = OrdersPage.ThisOrder.OrderPrice.ToString();
+        ClassLibrary.clsOrderCollection Orders = new ClassLibrary.clsOrderCollection();
+        lstOrderList.DataSource = Orders.OrderList;
+        lstOrderList.DataValueField = "OrderNumber";
+        lstOrderList.DataTextField = "OrderPrice";
+        lstOrderList.DataBind();
+   
     }
-
-    protected void lstOrderList_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
+    
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         Session["OrderNumber"] = -1;
-        Response.Redirect("AnOrder.aspx");
+        Response.Redirect("OrderDataEntry.aspx");
     }
+
 
     protected void btnEdit_Click(object sender, EventArgs e)
     {
@@ -52,7 +46,7 @@ public partial class AnOrder : System.Web.UI.Page
         {
             OrderNumber = Convert.ToInt32(lstOrderList.SelectedValue);
             Session["OrderNumber"] = OrderNumber;
-            Response.Redirect("AnOrder.aspx");
+            Response.Redirect("OrderDataEntry.aspx");
         }
         else {
             lblError.Text = "Please select a record to delete from the list";
@@ -66,10 +60,17 @@ public partial class AnOrder : System.Web.UI.Page
         {
             OrderNumber = Convert.ToInt32(lstOrderList.SelectedValue);
             Session["OrderNumber"] = OrderNumber;
-            Response.Redirect("DeleteOrder.aspx");
+            Response.Redirect("OrderConfirmDelete.aspx");
         }
         else {
             lblError.Text = "Please select a record to delete from the list";
         }
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsOrderCollection Orders = new clsOrderCollection();
+        Orders.RepostByAddress();
+
     }
 }

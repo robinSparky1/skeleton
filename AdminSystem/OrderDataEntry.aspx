@@ -38,14 +38,14 @@
 &nbsp;<asp:CheckBox ID="cbPayed" runat="server" Text="Payed" />
 &nbsp;<div>
             <br />
-            <asp:Label ID="lblError" runat="server" Text="[lblError]"></asp:Label>
+            <asp:Label ID="lblError" runat="server"></asp:Label>
             <br />
         </div>
         <p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" Text="Ok" />
+            <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" Text="Ok" style="height: 26px" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
         </p>
         <p>
             &nbsp;</p>

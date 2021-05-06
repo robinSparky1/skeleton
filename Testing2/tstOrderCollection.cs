@@ -150,7 +150,7 @@ namespace Testing2
             clsOrderCollection AllOrders = new clsOrderCollection();
             clsOrderCollection FilteredOrders = new clsOrderCollection();
             FilteredOrders.ReportByAddress("");
-            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count)
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
         }
 
         [TestMethod]
@@ -170,7 +170,11 @@ namespace Testing2
 
             if (FilteredOrders.Count == 2)
             {
-                if (FilteredOrders.OrdersList[0].OrderNumber != 3)
+                if (FilteredOrders.OrderList[0].OrderNumber != 3)
+                {
+                    OK = false;
+                }
+                if (FilteredOrders.OrderList[0].OrderNumber != 4)
                 {
                     OK = false;
                 }

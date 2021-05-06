@@ -90,14 +90,15 @@ namespace ClassLibrary
         public void RepostByAddress(string Address) {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@Address", Address);
-            DB.Execute("sproc_tblOrder_FilterByADdress");
+            DB.Execute("sproc_tblOrder_FilterByAddress");
+            PopulateArray(DB);
         }
 
         void PopulateArray(clsDataConnection DB) {
             Int32 Index = 0;
             Int32 RecordCount;
             RecordCount = DB.Count;
-            mAddressList = new List<clsOrder>();
+            mOrderList = new List<clsOrder>();
             while (Index < RecordCount)
             {
                 clsOrder anOrder = new clsOrder();

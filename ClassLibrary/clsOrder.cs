@@ -112,8 +112,10 @@ namespace ClassLibrary
         public string Valid(string address, string itemCount, string orderPrice, string date)
         {
 
-            String Error = "";
-            DateTime DateTemp;
+            String Error = "";
+
+            DateTime DateTemp;
+
             if (address.Length == 0)
             {
 
@@ -123,7 +125,10 @@ namespace ClassLibrary
             else if (address.Length > 50)
             {
 
-                Error = Error + "The address must be less than 50 characters : ";            }            try
+                Error = Error + "The address must be less than 50 characters : ";
+            }
+
+            try
             {
                 if (Convert.ToInt32(itemCount) == 0)
                 {
@@ -138,7 +143,9 @@ namespace ClassLibrary
             catch {
 
                 Error = Error + " Invalid Item Count : Item Count may not be negative ";
-            }            try
+            }
+
+            try
             {
                 if (Convert.ToInt32(orderPrice) < 0)
                 {
@@ -155,18 +162,25 @@ namespace ClassLibrary
 
             }
 
-            try
-            {
-                DateTemp = Convert.ToDateTime(date);
+            try
+
+            {
+
+                DateTemp = Convert.ToDateTime(date);
+
                 if (DateTemp < DateTime.Now.Date)
-                {
-                    Error = Error + "The date cannot be in the past : ";
+                {
+
+                    Error = Error + "The date cannot be in the past : ";
+
                 }
                 else if (DateTemp > DateTime.Now.Date)
                 {
 
-                    Error = Error + "The date cannot be in the future : ";
-                }
+                    Error = Error + "The date cannot be in the future : ";
+
+                }
+
             }
             catch
 

@@ -8,10 +8,35 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 OrderNumber;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        OrderNumber = Convert.ToInt32(Session["OrderNumber"]);
+        if (IsPostBack == false)
+        {
+            if (OrderNumber != -1)
+            {
+                DisplayOrders();
+            }
+        }
     }
+
+    void DisplayOrders()
+    {
+        clsOrderCollection OrdersPage = new clsOrderCollection();
+        //lstOrderList.DataSource = Orders.OrderList;
+        //lstOrderList.DataValueField = "OrderNumber";
+        //lstOrderList.DataTextField = "OrderPrice";
+        //lstOrderList.DataBind();
+        OrdersPage.ThisOrder.Find(OrderNumber);
+        txtAddress.Text = OrdersPage.ThisOrder.Address;
+        txtOrderNumber.Text = OrdersPage.ThisOrder.OrderNumber.ToString();
+        txtItemCount.Text = OrdersPage.ThisOrder.ItemCount.ToString();
+        txtDate.Text = OrdersPage.ThisOrder.Date.ToString();
+        txtOrderPrice.Text = OrdersPage.ThisOrder.OrderPrice.ToString();
+        cbPayed.Checked = OrdersPage.ThisOrder.Payed;
+    }
+
 
     protected void btnOk_Click(object sender, EventArgs e)
     {
@@ -42,18 +67,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 OrderList.ThisOrder = anOrder;
                 OrderList.Add();
             }
-            else {
+            else
+            {
                 OrderList.ThisOrder.Find(Convert.ToInt32(OrderNumber));
                 OrderList.ThisOrder = anOrder;
                 OrderList.Update();
             }
-            
+
             Response.Redirect("OrderList.aspx");
         }
-        else {
+        else
+        {
             lblError.Text = Error;
         }
-     
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -72,19 +103,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtAddress.Text = anOrder.Address.ToString();
             txtDate.Text = anOrder.Date.ToString();
             cbPayed.Checked = anOrder.Payed;
-            }
+        }
+    }
+   
+        protected void txtItemCount_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
-    protected void txtItemCount_TextChanged(object sender, EventArgs e)
-    {
+        protected void txtAddress_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
-
-
-
-    protected void txtAddress_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-}
 
