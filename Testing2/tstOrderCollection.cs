@@ -7,7 +7,7 @@ using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
-namespace Testing2
+namespace TestingOrderCollection
 {
     [TestClass]
     public class tstOrderCollection
@@ -93,7 +93,7 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void UpdateMethodUK() {
+        public void UpdateMethodOK() {
             clsOrderCollection AllOrders = new clsOrderCollection();
             clsOrder TestItem = new clsOrder();
             Int32 PrimaryKey = 0;
@@ -141,7 +141,7 @@ namespace Testing2
             AllOrders.ThisOrder.Find(PrimaryKey);
             AllOrders.Delete();
 
-            Boolean Found = AllOrders.ThisAddress.Find(PrimaryKey);
+            Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
             Assert.IsFalse(Found);
         }
 
@@ -154,10 +154,10 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void ReportByAddressNoneFound(string Address)
+        public void ReportByAddressNoneFound()
         {
             clsOrderCollection FilteredOrders = new clsOrderCollection();
-            FilteredOrders.ReportByAddress("xxxxx");
+            FilteredOrders.ReportByAddress("yozgat");
             Assert.AreEqual(0, FilteredOrders.Count);
 
         }
@@ -166,15 +166,15 @@ namespace Testing2
         public void ReportByAddressTestDataFound() {
             clsOrderCollection FilteredOrders = new clsOrderCollection();
             Boolean OK = true;
-            FilteredOrders.ReportByAddress("ankara");
+            FilteredOrders.ReportByAddress("adiyaman");
 
             if (FilteredOrders.Count == 2)
             {
-                if (FilteredOrders.OrderList[0].OrderNumber != 3)
+                if (FilteredOrders.OrderList[0].OrderNumber != 16)
                 {
                     OK = false;
                 }
-                if (FilteredOrders.OrderList[0].OrderNumber != 4)
+                if (FilteredOrders.OrderList[1].OrderNumber != 18)
                 {
                     OK = false;
                 }

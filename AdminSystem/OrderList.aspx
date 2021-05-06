@@ -22,12 +22,12 @@
         <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
         <p>
             Enter an address&nbsp;
-            <asp:TextBox ID="TextBox1" runat="server" Width="279px"></asp:TextBox>
+            <asp:TextBox ID="txtOrderSearch" runat="server" Width="279px"></asp:TextBox>
         </p>
         <p>
             <asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" Text="Apply" />
 &nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnClear" runat="server" Text="Clear" />
+            <asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" Text="Clear" />
         </p>
         <p>
             <asp:Label ID="lblError" runat="server"></asp:Label>

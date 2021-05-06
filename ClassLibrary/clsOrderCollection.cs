@@ -83,11 +83,12 @@ namespace ClassLibrary
             DB.AddParameter("@Itemcount", mThisOrder.ItemCount);
             DB.AddParameter("@Address", mThisOrder.Address);
             DB.AddParameter("@isPayed", mThisOrder.Payed);
+            DB.AddParameter("@Date", mThisOrder.Date);
 
             DB.Execute("sproc_tblOrder_Update");
         }
 
-        public void RepostByAddress(string Address) {
+        public void ReportByAddress(string Address) {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@Address", Address);
             DB.Execute("sproc_tblOrder_FilterByAddress");

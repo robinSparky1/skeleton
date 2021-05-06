@@ -70,7 +70,27 @@ public partial class _1_OrderList : System.Web.UI.Page
     protected void btnApply_Click(object sender, EventArgs e)
     {
         clsOrderCollection Orders = new clsOrderCollection();
-        Orders.RepostByAddress();
+        Orders.ReportByAddress(txtOrderSearch.Text);
+        lstOrderList.DataSource = Orders.OrderList;
+        lstOrderList.DataValueField = "OrderNumber";
+        lstOrderList.DataTextField = "Address";
+        lstOrderList.DataBind();
+
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsOrderCollection Orders = new clsOrderCollection();
+        Orders.ReportByAddress("");
+        txtOrderSearch.Text = "";
+        lstOrderList.DataSource = Orders.OrderList;
+        lstOrderList.DataValueField = "Address";
+        lstOrderList.DataBind();
+        
+    }
+
+    protected void lstOrderList_SelectedIndexChanged(object sender, EventArgs e)
+    {
 
     }
 }

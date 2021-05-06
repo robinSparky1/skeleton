@@ -92,7 +92,7 @@ namespace TestingOrder
             clsOrder anOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderNumber = 1;
+            Int32 OrderNumber = 3;
             Found = anOrder.Find(OrderNumber);
 
             if (anOrder.Date != Convert.ToDateTime("05/05/2021"))
